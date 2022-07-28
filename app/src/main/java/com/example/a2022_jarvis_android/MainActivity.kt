@@ -8,7 +8,4 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
-
-    //test commit을 위한 주석5
-    //test commit을 위한 주석5
 }
