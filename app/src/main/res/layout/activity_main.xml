@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="@drawable/bg2"
+    >
+
+    <Button
+        android:id="@+id/btSetting"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#FFC107"
+        android:text="환경설정 / 튜토리얼"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btCCTV" />
+
+    <Button
+        android:id="@+id/btnon"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="#FFC107"
+        android:text="논"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btbat"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#FFC107"
+        android:text="밭"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnon" />
+
+    <Button
+        android:id="@+id/btCCTV"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#FFC107"
+        android:text="CCTV"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btbat" />
+
+    <TextView
+        android:id="@+id/LogWindow"
+        android:layout_width="290dp"
+        android:layout_height="160dp"
+        android:layout_marginBottom="40dp"
+        android:background="#2196F3"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btSetting" />
+</androidx.constraintlayout.widget.ConstraintLayout>
