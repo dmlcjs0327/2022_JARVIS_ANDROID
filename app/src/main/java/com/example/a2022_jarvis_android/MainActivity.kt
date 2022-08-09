@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     class ClientThread : Thread() {
         override fun run() {
 
-            val serverIP = "192.168.0.2" //서버의 IP
+            val serverIP = "192.168.0.2" // 서버의 IP
             val port = 3022
             val data = "\nThis is the client message.\n이것은 클라이언트 메세지입니다.\n <by android>"
 
