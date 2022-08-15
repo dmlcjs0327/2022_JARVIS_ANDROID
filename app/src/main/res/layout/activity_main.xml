@@ -22,7 +22,8 @@
         app:layout_constraintHorizontal_bias="0.385"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerMemo"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        android:layout_marginLeft="8dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerMemo"
@@ -51,7 +52,8 @@
         app:layout_constraintEnd_toEndOf="@+id/recyclerMemo"
         app:layout_constraintStart_toEndOf="@+id/editMemo"
         app:layout_constraintTop_toTopOf="@+id/editMemo"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginLeft="16dp" />
 
     <EditText
         android:id="@+id/editMemo"
@@ -67,5 +69,6 @@
         app:layout_constraintEnd_toStartOf="@+id/save"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerMemo"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginLeft="8dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

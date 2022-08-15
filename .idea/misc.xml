@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/LUC/Project/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.343" />
+        <entry key="..\:/LUC/Project/android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.343" />
+        <entry key="..\:/LUC/Project/android/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/LUC/Project/android/app/src/main/res/layout/item_recycler.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/LUC/Desktop/LUC/Project/2022_JARVIS_ANDROID/app/src/main/res/layout/activity_main.xml" value="0.1875" />
-        <entry key="..\:/Users/Supervisor/AndroidStudioProjects/2022_JARVIS_ANDROID/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/Supervisor/AndroidStudioProjects/2022_JARVIS_ANDROID/app/src/main/res/layout/item_recycler.xml" value="0.1537037037037037" />
       </map>
     </option>
   </component>
