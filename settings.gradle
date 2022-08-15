@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -5,12 +6,15 @@ pluginManagement {
         mavenCentral()
     }
 }
+=======
+>>>>>>> e0376022ca0e1d0c61d6ac15d239a49784ab89e1
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
     }
 }
-rootProject.name = "2022_JARVIS_ANDROID"
+rootProject.name = "Farmmanager"
 include ':app'
