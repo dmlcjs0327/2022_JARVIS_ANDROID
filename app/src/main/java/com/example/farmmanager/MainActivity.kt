@@ -8,7 +8,7 @@ import android.content.Intent
 
 class MainActivity : AppCompatActivity() {
 
-    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         val intent3 = Intent(this, OptionActivity::class.java)
 
 
-        //레이아웃의 버튼들과 연동(클릭 시의 동작 설정)
+        //레이아웃의 버튼들과 연동 => 클릭 시 해당 엑티비티 화면을 띄우기
         binding.btnon.setOnClickListener { startActivity(intent0) }
         binding.btbat.setOnClickListener { startActivity(intent1) }
         binding.btCCTV.setOnClickListener { startActivity(intent2) }
