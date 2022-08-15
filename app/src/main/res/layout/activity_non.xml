@@ -117,6 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="257dp"
         android:background="#88B9DF"
+        android:contentDescription="@string/app_name"
         android:maxHeight="130dp"
         android:minHeight="0dp"
         android:text="  "

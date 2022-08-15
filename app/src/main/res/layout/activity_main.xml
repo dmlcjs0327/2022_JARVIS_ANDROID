@@ -12,8 +12,8 @@
 
     <Button
         android:id="@+id/btSetting"
-        android:layout_width="290dp"
-        android:layout_height="wrap_content"
+        android:layout_width="286dp"
+        android:layout_height="70dp"
         android:layout_marginTop="28dp"
         android:backgroundTint="#FFC107"
         android:text="환경설정 / 튜토리얼"
@@ -27,7 +27,7 @@
     <Button
         android:id="@+id/btnon"
         android:layout_width="290dp"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_marginTop="100dp"
         android:backgroundTint="#FFC107"
         android:text="논"
@@ -41,7 +41,7 @@
     <Button
         android:id="@+id/btbat"
         android:layout_width="290dp"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_marginTop="28dp"
         android:backgroundTint="#FFC107"
         android:text="밭"
@@ -55,7 +55,7 @@
     <Button
         android:id="@+id/btCCTV"
         android:layout_width="290dp"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_marginTop="28dp"
         android:backgroundTint="#FFC107"
         android:text="CCTV"
@@ -65,17 +65,18 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btbat" />
+
     <TextView
         android:id="@+id/LogWindow"
         android:layout_width="290dp"
-        android:layout_height="160dp"
+        android:layout_height="156dp"
         android:layout_marginBottom="40dp"
         android:background="#2196F3"
         android:backgroundTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btSetting"
-        app:layout_constraintVertical_bias="0.495" />
+        app:layout_constraintVertical_bias="0.915" />
 </androidx.constraintlayout.widget.ConstraintLayout>
