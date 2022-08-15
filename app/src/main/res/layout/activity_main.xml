@@ -64,21 +64,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btbat" /><![CDATA[
-
-
-
-    app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/item_recycler" />
-
-
-
-
-
-
-
-
-
-    ]]>
+        app:layout_constraintTop_toBottomOf="@+id/btbat" />
+    <TextView
+        android:id="@+id/LogWindow"
+        android:layout_width="290dp"
+        android:layout_height="160dp"
+        android:layout_marginBottom="40dp"
+        android:background="#2196F3"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btSetting"
+        app:layout_constraintVertical_bias="0.495" />
 </androidx.constraintlayout.widget.ConstraintLayout>
