@@ -29,10 +29,6 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> e0376022ca0e1d0c61d6ac15d239a49784ab89e1
     buildFeatures {
         viewBinding true
     }
@@ -40,19 +36,11 @@ android {
 
 dependencies {
 
-<<<<<<< HEAD
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
-    implementation 'com.google.android.material:material:1.6.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-=======
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.+'
->>>>>>> e0376022ca0e1d0c61d6ac15d239a49784ab89e1
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
