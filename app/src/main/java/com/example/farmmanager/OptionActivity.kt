@@ -12,6 +12,18 @@ class OptionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+
+        //초기화
+        binding.switchAlert.isChecked = MainActivity.alarm
+
+
+        //[경고 메세지 수신 여부]에 대한 바인딩
+        binding.switchAlert.setOnCheckedChangeListener { buttonView, isChecked ->
+            MainActivity.alarm = isChecked
+        }
+
+
+        //[나가기] 버튼에 대한 바인딩
         binding.btnBack4.setOnClickListener {
             finish()
         }

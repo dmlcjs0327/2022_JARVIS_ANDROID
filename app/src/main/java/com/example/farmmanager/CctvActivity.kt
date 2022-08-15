@@ -12,6 +12,8 @@ class CctvActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+
+        //[나가기] 버튼에 대한 바인딩
         binding.btnBack3.setOnClickListener {
             finish()
         }

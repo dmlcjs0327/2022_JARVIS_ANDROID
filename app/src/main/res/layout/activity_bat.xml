@@ -47,25 +47,34 @@
     <TextView
         android:id="@+id/textHL"
         android:layout_width="180dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginTop="30dp"
-        android:background="#EADDDD"
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="50"
+        android:textColor="#000000"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/batHL" />
 
-    <TextView
-        android:id="@+id/textHL1"
+    <EditText
+        android:id="@+id/TextHL1"
         android:layout_width="180dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="180dp"
-        android:background="#EADDDD"
+        android:layout_height="48dp"
+        android:layout_marginTop="108dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:gravity="center"
+        android:inputType="none|number"
+        android:maxLength="3"
+        android:text="50"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.19"
+        app:layout_constraintEnd_toStartOf="@+id/btHLset"
+        app:layout_constraintHorizontal_bias="0.623"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/batHL" />
+        app:layout_constraintTop_toBottomOf="@+id/textHL" />
 
     <Button
         android:id="@+id/btHLset"
