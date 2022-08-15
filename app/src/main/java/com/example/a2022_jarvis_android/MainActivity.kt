@@ -4,7 +4,8 @@ import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.a2022_jarvis_android.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,25 +13,27 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        val binding = ActivityMainBinding.inflate(layoutInflater);
+        setContentView(binding.root);
 
         val adapter = RecyclerAdapter()
         adapter.listData.addAll(helper.select())
         adapter.helper = helper
 
-        recyclerMemo.adapter = adapter
-        recyclerMemo.layoutManager = LinearLayoutManager(this)
+        binding.recyclerMemo.adapter = adapter
+        binding.recyclerMemo.layoutManager = LinearLayoutManager(this)
 
-        save.setOnClickListener {
-            val logging = Logging(null,editMemo.text.toString(),editMemo2.text.toString(),System.currentTimeMillis())
+        binding.save.setOnClickListener {
+            val logging = Logging(null,binding.editMemo.text.toString(),binding.editMemo2.text.toString(),System.currentTimeMillis())
             helper.insert(logging)
 
             adapter.listData.clear()
             adapter.listData.addAll(helper.select())
 
             adapter.notifyDataSetChanged()
-            editMemo.setText("")
-            editMemo2.setText("")
+            binding.editMemo.setText("")
+            binding.editMemo2.setText("")
         }
     }
 }

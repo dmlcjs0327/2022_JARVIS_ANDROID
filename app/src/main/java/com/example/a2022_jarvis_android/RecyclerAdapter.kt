@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_main.view.*
-import kotlinx.android.synthetic.main.item_recycler.view.*
+import com.example.a2022_jarvis_android.databinding.ActivityMainBinding
+import com.example.a2022_jarvis_android.databinding.ItemRecyclerBinding
 import java.text.SimpleDateFormat
 
 class RecyclerAdapter:RecyclerView.Adapter<RecyclerAdapter.Holder>() {
@@ -14,10 +14,9 @@ class RecyclerAdapter:RecyclerView.Adapter<RecyclerAdapter.Holder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_recycler,parent,false)
-        return Holder(view).apply {
-            itemView.btn_del.setOnClickListener {
+        val binding = ItemRecyclerBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return Holder(binding).apply {
+            binding.btndel.setOnClickListener {
                 var cursor = adapterPosition
 
                 helper?.delete(listData.get(cursor))
@@ -35,22 +34,16 @@ class RecyclerAdapter:RecyclerView.Adapter<RecyclerAdapter.Holder>() {
 
     override fun getItemCount(): Int {
         return listData.size
-
     }
-
-
-    inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class Holder(val binding:ItemRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun setMemo(logging:Logging){
-            itemView.textId.text = logging.id.toString()
-            itemView.textContent.text= logging.content.toString()
-            itemView.textContent2.text = logging.content2.toString()
+            binding.textId.text = logging.id.toString()
+            binding.textContent.text= logging.content.toString()
+            binding.textContent2.text = logging.content2.toString()
             val sdf = SimpleDateFormat("yyyy/MM/dd hh:mm")
-            itemView.textDatetime.text = "${sdf.format(logging.datetime)}"
-
+            binding.textDatetime.text = "${sdf.format(logging.datetime)}"
         }
-
     }
-
 }
 
