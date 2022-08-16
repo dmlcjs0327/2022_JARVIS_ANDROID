@@ -2,6 +2,7 @@ package com.example.farmmanager
 
 import androidx.appcompat.app.AppCompatActivity //MainActivity가 상속받을 클래스
 import android.os.Bundle //MainActivity가 받을 자료형 클래스
+import android.util.Log
 import com.example.farmmanager.databinding.ActivityBatBinding //databing(레이아웃 연동)을 위한 클래스
 
 class BatActivity : AppCompatActivity() {
@@ -14,8 +15,9 @@ class BatActivity : AppCompatActivity() {
 
 
         //값 초기화
-        binding.textHL.text = MainActivity.humity_out.toString()
         binding.TextHL1.setText(MainActivity.humity_in.toString())
+        binding.textHL.text = MainActivity.humity_out.toString()
+
 
 
         //[확인] 버튼에 대한 바인딩

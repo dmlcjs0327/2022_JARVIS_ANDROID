@@ -8,6 +8,7 @@ import android.util.Log
 import com.example.farmmanager.databinding.ActivityNonBinding //databing(레이아웃 연동)을 위한 클래스
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
+import java.lang.Thread.sleep
 
 class NonActivity : AppCompatActivity() {
 
@@ -23,6 +24,7 @@ class NonActivity : AppCompatActivity() {
         binding.WL.height = MainActivity.water_in
         binding.TextWL1.setText("${binding.seekBar.progress}")
         binding.TextWL.text = MainActivity.water_in.toString()
+        binding.TextWL.text = MainActivity.water_out.toString()
 
 
         //[seekBar]에 대한 바인딩
