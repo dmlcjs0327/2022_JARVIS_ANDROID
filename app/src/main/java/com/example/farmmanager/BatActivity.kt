@@ -33,13 +33,9 @@ class BatActivity : AppCompatActivity() {
             }
         })
 
-        //[확인] 버튼에 대한 바인딩
+        //[스프링쿨러 작동] 버튼에 대한 바인딩
         binding.btHLset.setOnClickListener {
-            //textHL의 text를 전역변수에 저장
-            MainActivity.humity_in = Integer.parseInt(binding.TextHL1.text.toString())
 
-            //정보 전송
-            SocketSender().start()
         }
 
 
