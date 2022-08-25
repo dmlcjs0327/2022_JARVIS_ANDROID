@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {      // Run 시 가장 먼저 실행 _08.25
         super.onCreate(savedInstanceState)
         setContentView(binding.root) //setContentView에는 binding.root를 꼭 전달
         SocketReceiver().start()
