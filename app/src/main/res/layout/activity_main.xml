@@ -14,7 +14,7 @@
         android:id="@+id/btSetting"
         android:layout_width="290dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="50dp"
         android:backgroundTint="#FFC107"
         android:text="환경설정"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -26,12 +26,12 @@
         app:layout_constraintTop_toBottomOf="@+id/btCCTV" />
 
     <Button
-        android:id="@+id/btnon"
+        android:id="@+id/btbat"
         android:layout_width="290dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:backgroundTint="#FFC107"
-        android:text="논"
+        android:text="농지"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,24 +40,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btbat"
-        android:layout_width="290dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:backgroundTint="#FFC107"
-        android:text="밭"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnon" />
-
-    <Button
         android:id="@+id/btCCTV"
         android:layout_width="290dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="50dp"
         android:backgroundTint="#FFC107"
         android:text="CCTV"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
@@ -71,11 +57,21 @@
         android:id="@+id/LogWindow"
         android:layout_width="290dp"
         android:layout_height="156dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="50dp"
         android:background="#2196F3"
         android:backgroundTint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btSetting" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerMemo"
+        android:layout_width="290dp"
+        android:layout_height="153dp"
+        app:layout_constraintBottom_toBottomOf="@+id/LogWindow"
+        app:layout_constraintEnd_toEndOf="@+id/LogWindow"
+        app:layout_constraintStart_toStartOf="@+id/LogWindow"
+        app:layout_constraintTop_toTopOf="@+id/LogWindow"
+        tools:listitem="@layout/item_recycler" />
 </androidx.constraintlayout.widget.ConstraintLayout>

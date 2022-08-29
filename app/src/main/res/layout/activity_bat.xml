@@ -62,7 +62,7 @@
         android:id="@+id/TextHL1"
         android:layout_width="180dp"
         android:layout_height="48dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="112dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:gravity="center"
@@ -71,23 +71,33 @@
         android:text="50"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="34sp"
-        app:layout_constraintEnd_toStartOf="@+id/btHLset"
-        app:layout_constraintHorizontal_bias="0.623"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textHL" />
 
     <Button
         android:id="@+id/btHLset"
-        android:layout_width="106dp"
-        android:layout_height="98dp"
-        android:layout_marginTop="280dp"
+        android:layout_width="141dp"
+        android:layout_height="144dp"
+        android:layout_marginTop="404dp"
         android:backgroundTint="#FFC107"
-        android:text="확인"
+        android:text="스프링쿨러 작동"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#0B0A0A"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.842"
+        app:layout_constraintHorizontal_bias="0.855"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekBar2"
+        android:layout_width="190dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="100dp"
+        android:rotation="270"
+        android:max="100"
+        app:layout_constraintEnd_toStartOf="@+id/btHLset"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextHL1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
