@@ -14,8 +14,8 @@ class MainActivity : AppCompatActivity() {
 
     //전역변수
     companion object{
-        var humity_in = 40   // jw: 앱 안에서 설정한 값 _in  _08.25
-        var humity_out = 80  // jw: 실제 값(센서가 측정한 값) _out  _08.25
+        var humity_in = 40                                  // jw: 앱 안에서 설정한 값 _in  _08.25
+        var humity_out = 80                                 // jw: 실제 값(센서가 측정한 값) _out  _08.25
         var water_in = 40
         var water_out = 80
         var alarm = false
@@ -164,9 +164,9 @@ class SocketClient : Serializable {                        //jw: Serializable(�
             }
         }
 
-        fun sendData(data: String) {                        //jw: 받아온 데이터를 UTF-8 형식으로 디코딩 하여 전송 _08.25            And -> 라즈베리
+        fun sendData(data: String) {                                    //jw: 받아온 데이터를 UTF-8 형식으로 디코딩 하여 전송 _08.25            And -> 라즈베리
 //        outputStream.write(data.toByteArray(Charsets.UTF_8))
-            dataoutputStream.writeUTF(data)                 //jw: (tip) 통로에 쓰기 = output = write (동급은 아니어도 비슷한 개념으로 이해) _08.25
+            dataoutputStream.writeUTF(data)                             //jw: (tip) 통로에 쓰기 = output = write (동급은 아니어도 비슷한 개념으로 이해) _08.25
         }
 
         fun read(): String? {                                               //jw: And <- 라즈베리 _08.25
@@ -179,7 +179,7 @@ class SocketClient : Serializable {                        //jw: Serializable(�
             return null
         }
 
-        fun closeConnect() {                //jw: 연결이 모두 끝났으면, 스트림과 소켓을 닫아주는 것이다
+        fun closeConnect() {                                            //jw: 연결이 모두 끝났으면, 스트림과 소켓을 닫아주는 것이다
             outputStream.close()
             inputStream.close()
             originSocket.close()
