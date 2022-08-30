@@ -9,7 +9,7 @@ import java.io.*
 import java.lang.Thread.sleep
 import java.net.Socket
 
-
+//메인 클래스
 class MainActivity : AppCompatActivity() {
 
     //전역변수
@@ -25,13 +25,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("[LOG]","MainActivity - onCreate: 시작")
         setContentView(binding.root) //setContentView에는 binding.root를 꼭 전달
-        SocketReceiver().start()
+        SocketReceiver().start() //SocketReceiver 시작
 
-        val intent0 = Intent(this, BatActivity::class.java)
-        val intent1 = Intent(this, CctvActivity::class.java)
-        val intent2 = Intent(this, OptionActivity::class.java)
-
+        val intent0 = Intent(this, BatActivity::class.java) //Bat intent
+        val intent1 = Intent(this, CctvActivity::class.java) //Cctv intent
+        val intent2 = Intent(this, OptionActivity::class.java) //Option intent
 
         //레이아웃의 버튼들과 연동 => 클릭 시 해당 엑티비티 화면을 띄우기
         binding.btbat.setOnClickListener { startActivity(intent0) }
@@ -40,16 +40,17 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
+//컨트롤러에게서 데이터를 받아올 클래스
 class SocketReceiver : Thread() {
-    //Receiver는 계속 유지되어야 한다
-    override fun run() {
+    
+    override fun run() { //thread를 시작 시, 이 부분이 실행
 
-        Log.d("LUC_TAG","SocketReceiver 시작")
-        //소켓 생성
+        Log.d("[LOG]","SocketReceiver: 시작")
 
+        //1) 소켓 생성
         try{SocketClient.connect()}
         catch(e:java.lang.Exception){}
-        Log.d("LUC_TAG","SocketReceiver 연결 완료")
+        Log.d("[LOG]","SocketReceiver 연결 완료")
 
 
         //data 받기 (밭습도,물높이)
@@ -129,33 +130,41 @@ class SocketSender : Thread() {
     }
 }
 
-class SocketClient : Serializable {
-    companion object{
-        val serverIP = "192.168.0.2" // 서버의 IP
-        val port = 3022 // 서버의 port
 
+//소켓에 대한 클래스
+class SocketClient : Serializable { //데이터 변환을 위해, Serializable 상속
 
-        lateinit var originSocket: Socket
-        lateinit var inputStream: InputStream
-        lateinit var outputStream: OutputStream
-        lateinit var datainputStream: DataInputStream
-        lateinit var dataoutputStream: DataOutputStream
+    companion object{ //생성한 소켓을 통해 데이터 송수신을 모두 해야하므로, 전역으로 설정
+        val serverIP = "192.168.0.2" // 서버의 IP (현재 이의천-노트북 IP로 설정되어 있음)
+        val port = 3022 // 접근할 port (변경 가능)
 
-        var socketBtn = false
+        //사용할 stream들을 선언 (지연 초기화)
+        lateinit var originSocket: Socket //소켓 객체
+        lateinit var inputStream: InputStream //데이터를 받아올 스트림
+        lateinit var outputStream: OutputStream //데이터를 전송할 스트림
+        lateinit var datainputStream: DataInputStream //input에 대한 래퍼스트림
+        lateinit var dataoutputStream: DataOutputStream //output에 대한 래퍼스트림
 
-        fun connect() {
+        var isConnect = false //소켓이 생성되었는지에 대한 변수
+
+        //소켓을 생성 후, 서버와 연결
+        fun connect(): Boolean {
             try {
-                originSocket = Socket(serverIP, port)
+
+                originSocket = Socket(serverIP, port) //소켓객체 생성
+
                 outputStream = originSocket.getOutputStream()
                 inputStream = originSocket.getInputStream()
+
                 dataoutputStream = DataOutputStream(outputStream)
                 datainputStream = DataInputStream(inputStream)
-                socketBtn = true
+
+                isConnect = true
 
             } catch (e: Exception) {
-                Log.d("LUC_TAG","socket connect exception: $e")
+                Log.d("[LOG]","socket connect error: $e")
                 sleep(2000)
-                Log.d("LUC_TAG","retry")
+                Log.d("[LOG]","retry")
                 connect()
             }
         }
