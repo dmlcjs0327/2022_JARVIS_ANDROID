@@ -22,7 +22,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btSound3"
         app:layout_constraintVertical_bias="1.0" />
 
-    <VideoView
+    <WebView
         android:id="@+id/videoView"
         android:layout_width="413dp"
         android:layout_height="295dp"
