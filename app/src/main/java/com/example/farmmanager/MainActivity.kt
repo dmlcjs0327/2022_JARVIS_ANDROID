@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         var water_in = 40
         var water_out = 80
         var alarm = false
+        val adapter = RecyclerAdapter()
     }
 
     val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
@@ -30,9 +31,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root) //setContentView에는 binding.root를 꼭 전달
         SocketReceiver().start()
 
-        val adapter = RecyclerAdapter() //RecyclerAdpater 생성
+
         adapter.listData.addAll(helper.select()) //adapter의 listData에 DB에서 가져온 데이터를 세팅
-        adapter.helper = helper
+
         binding.recyclerMemo.adapter = adapter //메인 화면의 리사이클러뷰 위젯에 adpater을 연결
         binding.recyclerMemo.layoutManager = LinearLayoutManager(this)  //레이아웃 매니저를 설정
 

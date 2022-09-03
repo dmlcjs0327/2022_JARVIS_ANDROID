@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper
 data class Logging(var id:Long?, var content2: String, var datetime:Long) {}
 //Logging이라는 데이터클래스를 정의하여 삽입, 조회, 수정, 삭제 할때 편리하게 사용
 
-class SqliteHelper(context: Context?, name: String?, factory: SQLiteDatabase.CursorFactory?, version: Int)
+class SqliteHelper(context: Context, name: String?, factory: SQLiteDatabase.CursorFactory?, version: Int)
     : SQLiteOpenHelper(context, name, factory, version) {
 //sqliteopenhelper 클래스를 상속받아서 사용 (sqliteopenhelper은 SQLite와 액티비티를 연결시켜 DB를 파일로 생성하고, 코트린 코드에서 사용할수있도록 도와줌)
 //onCreate와 onUpgrade 메서드는 자동으로 생성

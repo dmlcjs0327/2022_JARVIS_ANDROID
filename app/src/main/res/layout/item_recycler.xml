@@ -15,64 +15,40 @@
 
         <TextView
             android:id="@+id/textContent"
-            android:layout_width="51dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="28dp"
+            android:layout_width="53dp"
+            android:layout_height="16dp"
+            android:layout_marginBottom="20dp"
             android:ellipsize="end"
             android:text="밭 습도 :"
             android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.301"
+            app:layout_constraintHorizontal_bias="0.164"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/textContent2"
-            android:layout_width="65dp"
-            android:layout_height="19dp"
-            android:layout_marginBottom="24dp"
+            android:layout_width="73dp"
+            android:layout_height="18dp"
+            android:layout_marginBottom="20dp"
             android:ellipsize="end"
             android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintHorizontal_bias="0.425"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:text="01"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.15"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/textDatetime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:text="2021/01/01 13:57"
             android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.813"
+            app:layout_constraintHorizontal_bias="0.78"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/btndel"
-            android:layout_width="54dp"
-            android:layout_height="38dp"
-            android:layout_marginEnd="56dp"
-            android:text="삭제"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toTopOf="@+id/textDatetime"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

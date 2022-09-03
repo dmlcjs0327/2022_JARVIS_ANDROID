@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat
 
 class RecyclerAdapter:RecyclerView.Adapter<RecyclerAdapter.Holder>() { // 리사이클러뷰는 리사이클러뷰어댑터라는 메서드 어댑터를 사용해서 데이터 연결해야함
     var listData = ArrayList<Logging>()  //어댑터에서 사용할 데이터 목록 변수
-    var helper:SqliteHelper? = null
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder { //한 화면에 그려지는 아이템 개수만큼 레이아웃 생성 ex)한화면에 여섯줄이 보이면 야삿번 호출
@@ -29,20 +29,13 @@ class RecyclerAdapter:RecyclerView.Adapter<RecyclerAdapter.Holder>() { // 리사
     inner class Holder(val binding:ItemRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
         //이 Holder class는 화면에 보여지는 개수 만큼만 뷰홀더를 생성하고 목록을 위로 스크롤 할 경우 가장 위의 뷰홀더를 가장 아래 뷰 홀더에서 가져와 재사용한 후 데이터만 바꿔주는 역할을
         //하기때문에 앱의 효율을 상승시킨다. - ViewHolder클래스 상속받음 (어댑터에서 바인딩을 생성한 후에 뷰 홀더에 넘겨줌)
-        var mLogging:Logging? = null //클릭하는시점에 어떤 데이터를 삭제할 것인지 위치를 알기위한 변수
-        init{
-            binding.btndel.setOnClickListener { //삭제버튼을 누르면 helper와 listData에 접근하여 삭제하고 어댑터 갱신
-                helper?.delete(mLogging!!)
-                listData.remove(mLogging)
-                notifyDataSetChanged()
-            }
-        }
+
         fun setMemo(logging:Logging){ //화면에 데이터를 세팅
-            binding.textid.text = "${logging.id}"
+
             binding.textContent2.text = logging.content2
             val sdf = SimpleDateFormat("yyyy/MM/dd hh:mm")
             binding.textDatetime.text = "${sdf.format(logging.datetime)}"
-            this.mLogging = logging
+
         }
     }
 }

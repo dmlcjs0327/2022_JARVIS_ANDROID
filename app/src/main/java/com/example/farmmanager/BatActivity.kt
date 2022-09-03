@@ -3,7 +3,7 @@ package com.example.farmmanager
 import androidx.appcompat.app.AppCompatActivity //MainActivity가 상속받을 클래스
 import android.os.Bundle //MainActivity가 받을 자료형 클래스
 import android.widget.SeekBar
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.farmmanager.MainActivity.Companion.adapter
 import com.example.farmmanager.databinding.ActivityBatBinding //databing(레이아웃 연동)을 위한 클래스
 
 class BatActivity : AppCompatActivity() {
@@ -15,7 +15,6 @@ class BatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val adapter = RecyclerAdapter()
 
         //값 초기화
         binding.TextHL1.setText(MainActivity.humity_in.toString())
@@ -50,7 +49,6 @@ class BatActivity : AppCompatActivity() {
             } //TextHL1 위젯에 값이있으면 해당 내용으로 Logging 데이터 클래스를 생성하고 helper 클래스의 insert 메서드에 전달하여 DB에 저장
 
             adapter.listData.clear() //어뎁터의 데이터를 모두 초기화
-
             adapter.listData.addAll(helper.select())
             adapter.notifyDataSetChanged()           //DB에서 새로운 목록을 읽어와서 어댑터에 세팅하고 갱신함
         }
