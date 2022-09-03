@@ -10,6 +10,7 @@ class BatActivity : AppCompatActivity() {
 
     val binding by lazy { ActivityBatBinding.inflate(layoutInflater) }
     val helper = SqliteHelper(this,"logging",null,1)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -46,12 +47,12 @@ class BatActivity : AppCompatActivity() {
             if(binding.TextHL1.text.toString().isNotEmpty()){
                 val logging = Logging(null,binding.TextHL1.text.toString(),System.currentTimeMillis())
                 helper.insert(logging)
-            }
+            } //TextHL1 위젯에 값이있으면 해당 내용으로 Logging 데이터 클래스를 생성하고 helper 클래스의 insert 메서드에 전달하여 DB에 저장
 
-            adapter.listData.clear()
+            adapter.listData.clear() //어뎁터의 데이터를 모두 초기화
+
             adapter.listData.addAll(helper.select())
-
-            adapter.notifyDataSetChanged()
+            adapter.notifyDataSetChanged()           //DB에서 새로운 목록을 읽어와서 어댑터에 세팅하고 갱신함
         }
 
 
