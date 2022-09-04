@@ -135,7 +135,7 @@ class SocketSender : Thread() {
 
 class SocketClient : Serializable {                        //jw: Serializable(직렬화) = 데이터 스트림을 사용 할 때 _08.25
     companion object{
-        val serverIP = "192.168.0.2" // 서버의 IP           //jw: 의천이형 노트북 ip ㄸㄹㅅ, 라즈베리파이 ip 로 나중에 바꿔줘야함 _08.25
+        val serverIP = "192.168.8.99" // 서버의 IP           //jw: 의천이형 노트북 ip ㄸㄹㅅ, 라즈베리파이 ip 로 나중에 바꿔줘야함 _08.25
         val port = 3022 // 서버의 port                      //jw: 데이터를 받아 낼 포트( 사용하지 않는 포트를 랜덤으로 설정 한 것 ) _08.25
 
 
