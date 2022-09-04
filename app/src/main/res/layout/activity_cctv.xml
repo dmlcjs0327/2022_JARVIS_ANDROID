@@ -24,8 +24,8 @@
 
     <WebView
         android:id="@+id/videoView"
-        android:layout_width="408dp"
-        android:layout_height="306dp"
+        android:layout_width="398dp"
+        android:layout_height="305dp"
         android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
