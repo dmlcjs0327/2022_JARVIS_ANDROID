@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "376331136297",
+    "project_id": "farmmanager-78910",
+    "storage_bucket": "farmmanager-78910.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:376331136297:android:8958d726be28c562d79b38",
+        "android_client_info": {
+          "package_name": "com.example.farmmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "376331136297-7dm8jhu5vod8m8lfl9es2kvcilq9obdh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsnn6BdkmDLbrWwwPFnegw5mpF1nLFj3w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "376331136297-7dm8jhu5vod8m8lfl9es2kvcilq9obdh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

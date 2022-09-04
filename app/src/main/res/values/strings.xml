@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Farmmanager</string>
+    <string name="firebase_notification_channel_id" />
 </resources>
