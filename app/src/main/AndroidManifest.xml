@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Farmmanager">
         <activity
+            android:name=".diary"
+            android:exported="false" />
+        <activity
             android:name=".OptionActivity"
             android:exported="false" />
         <activity

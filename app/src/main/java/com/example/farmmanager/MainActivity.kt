@@ -31,12 +31,14 @@ class MainActivity : AppCompatActivity() {
         val intent0 = Intent(this, BatActivity::class.java)
         val intent1 = Intent(this, CctvActivity::class.java)
         val intent2 = Intent(this, OptionActivity::class.java)
+        val intent3 = Intent(this, diary::class.java)
 
 
         //레이아웃의 버튼들과 연동 => 클릭 시 해당 엑티비티 화면을 띄우기
         binding.btbat.setOnClickListener { startActivity(intent0) }
         binding.btCCTV.setOnClickListener { startActivity(intent1) }
         binding.btSetting.setOnClickListener { startActivity(intent2) }
+        binding.btdiary.setOnClickListener { startActivity(intent3) }
     }
 }
 

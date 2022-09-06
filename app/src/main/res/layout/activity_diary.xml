@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg1"
+    tools:context=".diary">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/diarychart"
+        android:layout_width="412dp"
+        android:layout_height="480dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/typingdiary"
+        android:layout_width="276dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/diarychart" />
+
+    <Button
+        android:id="@+id/btsave"
+        android:layout_width="91dp"
+        android:layout_height="80dp"
+        android:backgroundTint="#FFEB3B"
+        android:text="저장"
+        android:textColor="#100F0F"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/typingdiary"
+        app:layout_constraintTop_toBottomOf="@+id/diarychart" />
+
+    <Button
+        android:id="@+id/btout"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FF9800"
+        android:text="나가기"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/typingdiary" />
+</androidx.constraintlayout.widget.ConstraintLayout>
