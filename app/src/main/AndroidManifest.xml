@@ -3,6 +3,9 @@
     package="com.example.farmmanager">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
 
     <application
         android:allowBackup="true"
@@ -13,6 +16,9 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Farmmanager">
         <activity
+            android:name=".diary"
+            android:exported="false" />
+        <activity
             android:name=".OptionActivity"
             android:exported="false" />
         <activity
@@ -20,9 +26,6 @@
             android:exported="false" />
         <activity
             android:name=".BatActivity"
-            android:exported="false" />
-        <activity
-            android:name=".NonActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

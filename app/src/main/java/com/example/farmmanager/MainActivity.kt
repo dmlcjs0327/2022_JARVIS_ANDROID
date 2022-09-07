@@ -10,8 +10,9 @@ import java.io.*
 import java.lang.Thread.sleep
 import java.net.Socket
 
-
+//메인 클래스
 class MainActivity : AppCompatActivity() {
+
     //전역변수
     companion object{
         var humity_in = 40                                  // jw: 앱 안에서 설정한 값 _in  _08.25
@@ -27,31 +28,30 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {      // Run 시 가장 먼저 실행 _08.25
         super.onCreate(savedInstanceState)
+        Log.d("[LOG]","MainActivity - onCreate: 시작")
         setContentView(binding.root) //setContentView에는 binding.root를 꼭 전달
-        SocketReceiver().start()
+        SocketReceiver().start() //SocketReceiver 시작
 
+        val intent0 = Intent(this, BatActivity::class.java)
+        val intent1 = Intent(this, CctvActivity::class.java)
+        val intent2 = Intent(this, OptionActivity::class.java)
+        val intent3 = Intent(this, diary::class.java)
         val adapter = RecyclerAdapter() //RecyclerAdpater 생성
         adapter.listData.addAll(helper.select()) //adapter의 listData에 DB에서 가져온 데이터를 세팅
         adapter.helper = helper
         binding.recyclerMemo.adapter = adapter //메인 화면의 리사이클러뷰 위젯에 adpater을 연결
         binding.recyclerMemo.layoutManager = LinearLayoutManager(this)  //레이아웃 매니저를 설정
 
-        val intent0 = Intent(this, BatActivity::class.java)
-        val intent1 = Intent(this, CctvActivity::class.java)
-        val intent2 = Intent(this, OptionActivity::class.java)
-
 
         //레이아웃의 버튼들과 연동 => 클릭 시 해당 엑티비티 화면을 띄우기
-
         binding.btbat.setOnClickListener { startActivity(intent0) }
         binding.btCCTV.setOnClickListener { startActivity(intent1) }
         binding.btSetting.setOnClickListener { startActivity(intent2) }
-
-
+        binding.btdiary.setOnClickListener { startActivity(intent3) }
     }
 }
 
-class SocketReceiver : Thread() {  // jw: :Thread() <- 스레드라는 클래스를 상속한다. _08.25
+class SocketReceiver : Thread() {
     //Receiver는 계속 유지되어야 한다
     override fun run() {
 
@@ -62,6 +62,7 @@ class SocketReceiver : Thread() {  // jw: :Thread() <- 스레드라는 클래스
         catch(e:java.lang.Exception){ }
 
         Log.d("LUC_TAG","SocketReceiver 연결 완료")
+
 
         //data 받기 (밭습도,물높이)
         while(true){
@@ -81,7 +82,6 @@ class SocketReceiver : Thread() {  // jw: :Thread() <- 스레드라는 클래스
                 sleep(1000)
                 while(true){
                     try{
-                        sleep(100)
                         if(SocketClient.socketBtn == false) SocketClient.connect()
                         break
                     }catch(e: java.lang.Exception){}
@@ -128,7 +128,6 @@ class SocketSender : Thread() {
                 sleep(1000)
                 while(true){
                     try{
-                        sleep(100)
                         if(SocketClient.socketBtn == false) SocketClient.connect()
                         break
                     }catch(e: java.lang.Exception){}

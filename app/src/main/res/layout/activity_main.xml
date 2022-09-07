@@ -9,6 +9,20 @@
     tools:context=".MainActivity">
 
     <Button
+        android:id="@+id/btdiary"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#FFC107"
+        android:text="성장일지"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btCCTV" />
+
+    <Button
         android:id="@+id/btSetting"
         android:layout_width="290dp"
         android:layout_height="wrap_content"
@@ -21,13 +35,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btCCTV" />
+        app:layout_constraintTop_toBottomOf="@+id/btdiary" />
 
     <Button
         android:id="@+id/btbat"
         android:layout_width="290dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:backgroundTint="#FFC107"
         android:text="농지"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
