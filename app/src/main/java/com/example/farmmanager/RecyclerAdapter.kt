@@ -6,13 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.farmmanager.databinding.ItemRecyclerBinding
 import java.text.SimpleDateFormat
 
-class RecyclerAdapter:RecyclerView.Adapter<RecyclerAdapter.Holder>() { // 리사이클러뷰는 리사이클러뷰어댑터라는 메서드 어댑터를 사용해서 데이터 연결해야함
+// 리사이클러뷰는 리사이클러뷰어댑터라는 메서드 어댑터를 사용해서 데이터 연결해야함
+class RecyclerAdapter:RecyclerView.Adapter<RecyclerAdapter.Holder>() {
     var listData = ArrayList<Logging>()  //어댑터에서 사용할 데이터 목록 변수
-    var helper:SqliteHelper? = null
+    var helper:MainDBHelper? = null
 
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder { //한 화면에 그려지는 아이템 개수만큼 레이아웃 생성 ex)한화면에 여섯줄이 보이면 야삿번 호출
-        val binding = ItemRecyclerBinding.inflate(LayoutInflater.from(parent.context),parent,false)//
+    //한 화면에 그려지는 아이템 개수만큼 레이아웃 생성 ex)한화면에 6줄이 보이면 6번 호출
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
+        val binding = ItemRecyclerBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return Holder(binding) //생성된 binding을 Holder 클래스에 담아서 반환
     }
 
