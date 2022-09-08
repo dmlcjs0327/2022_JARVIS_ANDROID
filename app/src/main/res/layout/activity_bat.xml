@@ -7,6 +7,22 @@
     android:background="@drawable/bg1"
     tools:context=".BatActivity">
 
+    <Switch
+        android:id="@+id/switchAlert2"
+        android:layout_width="306dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="544dp"
+        android:layout_marginBottom="300dp"
+        android:background="#FA0303"
+        android:text="       모터 강제 작동"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.352"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.633"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
     <TextView
         android:id="@+id/batHL"
         android:layout_width="180dp"
@@ -77,26 +93,29 @@
 
     <Button
         android:id="@+id/btHLset"
-        android:layout_width="141dp"
-        android:layout_height="144dp"
+        android:layout_width="119dp"
+        android:layout_height="94dp"
         android:layout_marginTop="404dp"
         android:backgroundTint="#FFC107"
-        android:text="스프링쿨러 작동"
+        android:text="설정 습도 전송"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#0B0A0A"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.855"
+        app:layout_constraintHorizontal_bias="0.852"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
     <SeekBar
         android:id="@+id/seekBar2"
         android:layout_width="190dp"
         android:layout_height="40dp"
-        android:layout_marginTop="100dp"
-        android:rotation="270"
+        android:layout_marginTop="72dp"
         android:max="100"
+        android:rotation="270"
         app:layout_constraintEnd_toStartOf="@+id/btHLset"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TextHL1" />
 

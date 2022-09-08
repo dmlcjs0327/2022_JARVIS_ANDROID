@@ -7,7 +7,7 @@ import android.widget.Toast
 
 
 object GlobalVariables {
-    var alarmOn = false //푸시알람 설정 여부
+    var alarmOn = 0 //푸시알람 설정 여부 / 0: 해제, 1: 설정
 
     //받아올 정보(습도,T이상,S이상)
     var humityReal = 50 //실제 습도(컨트롤러가 보내준 습도)
@@ -25,6 +25,7 @@ object GlobalVariables {
     val interval = 1000L //스레드를 정지할 시간 (밀리초)
     val serverIP = "192.168.0.2" // 서버의 IP
     val serverPort = 3022 // 서버의 port
+    val videoUrl = "http://192.168.0.194:8081/?action=stream"
 
     //임시 메세지창을 띄우는 함수
     fun toast(message: String) {

@@ -3,6 +3,7 @@ package com.example.farmmanager
 
 
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -38,6 +39,7 @@ class LogDBRecyclerAdapter:RecyclerView.Adapter<LogDBRecyclerAdapter.Holder>() {
     }
 
 
+    @SuppressLint("NotifyDataSetChanged")
     inner class Holder(val binding:ItemRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
         //Holder: 화면에 보여지는 개수 만큼만 뷰홀더를 생성 (ViewHolder 클래스를 상속받으며, 어댑터에서 바인딩을 생성한 후에 뷰 홀더에 넘겨줌)
         //        목록을 위로 스크롤 할 경우 가장 위의 뷰홀더를 가장 아래 뷰 홀더에서 가져와 데이터만 바꿔주는 역할
@@ -57,11 +59,12 @@ class LogDBRecyclerAdapter:RecyclerView.Adapter<LogDBRecyclerAdapter.Holder>() {
 
 
         //화면에 데이터를 세팅
+        @SuppressLint("SimpleDateFormat")
         fun setMemo(logging:Logging){
             binding.textid.text = "${logging.id}"
             binding.textContent2.text = logging.content
             val sdf = SimpleDateFormat("yyyy/MM/dd hh:mm") //현재 시간
-            binding.textDatetime.text = "${sdf.format(logging.datetime)}" //뷰에서 시간 text 를 수정
+            binding.textDatetime.text = sdf.format(logging.datetime) //뷰에서 시간 text 를 수정
             this.curLogging = logging
         }
     }
@@ -95,6 +98,7 @@ class DiaryDBRecyclerAdapter: RecyclerView.Adapter<DiaryDBRecyclerAdapter.Holder
     }
 
 
+    @SuppressLint("NotifyDataSetChanged")
     inner class Holder(val binding: ItemDiarychartBinding): RecyclerView.ViewHolder(binding.root) {
         //Holder: 화면에 보여지는 개수 만큼만 뷰홀더를 생성 (ViewHolder 클래스를 상속받으며, 어댑터에서 바인딩을 생성한 후에 뷰 홀더에 넘겨줌)
         //        목록을 위로 스크롤 할 경우 가장 위의 뷰홀더를 가장 아래 뷰 홀더에서 가져와 데이터만 바꿔주는 역할
@@ -113,11 +117,12 @@ class DiaryDBRecyclerAdapter: RecyclerView.Adapter<DiaryDBRecyclerAdapter.Holder
 
 
         //화면에 데이터를 세팅
+        @SuppressLint("SimpleDateFormat")
         fun setMemo(diarying: Diarying) {
             binding.recordnum.text = "${diarying.id}"
             binding.record.text = diarying.content
             val sdf = SimpleDateFormat("yyyy/MM/dd hh:mm") //현재 시간
-            binding.recordDate.text = "${sdf.format(diarying.datetime)}" //뷰에서 시간 text를 수정
+            binding.recordDate.text = sdf.format(diarying.datetime) //뷰에서 시간 text를 수정
             this.curDiarying = diarying
         }
     }

@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
 
-    //메인엑티비티 실행 시 동작코드
+    //엑티비티 실행 시 동작코드
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root) //setContentView 에는 binding.root 를 꼭 전달

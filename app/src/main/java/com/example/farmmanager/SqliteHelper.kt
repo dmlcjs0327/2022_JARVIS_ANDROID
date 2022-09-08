@@ -206,7 +206,7 @@ class DiaryDBHelper(context: Context?, name: String?, factory: SQLiteDatabase.Cu
 
     //select: Diarying 이 담긴 리스트를 리턴
     @SuppressLint("Range") //설정 SDK 버전 이후의 API 를 경고없이 사용할 수 있게 해주는 어노테이션
-    fun selectMemo(): MutableList<Diarying> {
+    fun select(): MutableList<Diarying> {
         val list = mutableListOf<Diarying>() //리턴할 리스트 생성
 
         val cursor = readableDatabase.rawQuery("select * from diarying", null)
