@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    val helper = SqliteHelper(this,"logging",null,1)
+    val helper = MainDBHelper(this,"logging",null,1)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {      // Run 시 가장 먼저 실행 _08.25
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         val intent0 = Intent(this, BatActivity::class.java)
         val intent1 = Intent(this, CctvActivity::class.java)
         val intent2 = Intent(this, OptionActivity::class.java)
-        val intent3 = Intent(this, diary::class.java)
+        val intent3 = Intent(this, DiaryActivity::class.java)
         val adapter = RecyclerAdapter() //RecyclerAdpater 생성
         adapter.listData.addAll(helper.select()) //adapter의 listData에 DB에서 가져온 데이터를 세팅
         adapter.helper = helper

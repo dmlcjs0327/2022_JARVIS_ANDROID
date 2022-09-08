@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Farmmanager">
         <activity
-            android:name=".diary"
+            android:name=".DiaryActivity"
             android:exported="false" />
         <activity
             android:name=".OptionActivity"

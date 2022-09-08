@@ -8,10 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
 import com.example.farmmanager.databinding.ActivityDiaryBinding
 
-class diary : AppCompatActivity() {
+
+
+class DiaryActivity : AppCompatActivity() {
 
     val binding by lazy { ActivityDiaryBinding.inflate(layoutInflater) }
-    val helper = SqliteHelper(this, "memo", 1)
+    val helper = MemoDBHelper(this, "memo", null ,1)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -18,7 +18,7 @@ class BatActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val helper = MainDBHelper(this,"logging",null,1) //현 프로그램의 전반적인 DB를 관리하기 위한 클래스
-        val adapter = RecyclerAdapter() //리사클러뷰를 사용하기 위한 클래스
+        val adapter = MainDBRecyclerAdapter() //리사클러뷰를 사용하기 위한 클래스
 
         //값 초기화
         binding.TextHL1.setText(MainActivity.humity_in.toString())
@@ -54,7 +54,7 @@ class BatActivity : AppCompatActivity() {
             adapter.listData.clear() //어뎁터의 데이터를 모두 초기화
 
             adapter.listData.addAll(helper.select())
-            adapter.notifyDataSetChanged()           //DB에서 새로운 목록을 읽어와서 어댑터에 세팅하고 갱신함
+            adapter.notifyDataSetChanged()  //DB에서 새로운 목록을 읽어와서 어댑터에 세팅하고 갱신함
         }
 
 
