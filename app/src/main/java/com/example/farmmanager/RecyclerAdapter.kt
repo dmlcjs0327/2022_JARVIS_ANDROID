@@ -50,7 +50,6 @@ class LogDBRecyclerAdapter:RecyclerView.Adapter<LogDBRecyclerAdapter.Holder>() {
         //생성자: 삭제버튼을 누르면 helper 와 listData 에 접근하여 삭제하고 어댑터 갱신
         init{
             binding.btndel.setOnClickListener {
-                if (helper == null)
                 helper?.delete(curLogging) //DB 에서 curLogging 에 해당하는 정보를 제거
                 listData.remove(curLogging)
                 notifyDataSetChanged() //리스트 업데이트
