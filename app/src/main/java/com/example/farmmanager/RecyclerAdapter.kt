@@ -1,4 +1,4 @@
-//RecyclerView 를 사용할 수 있게 해주는 클래스 모음: MainDBRecyclerAdapter, DiaryDBRecyclerAdapter
+//RecyclerView 를 사용할 수 있게 해주는 클래스 모음: LogDBRecyclerAdapter, DiaryDBRecyclerAdapter
 package com.example.farmmanager
 
 
@@ -12,17 +12,17 @@ import java.text.SimpleDateFormat
 
 
 
-//메인 로그창에 대한 클래스
-class MainDBRecyclerAdapter:RecyclerView.Adapter<MainDBRecyclerAdapter.Holder>() {
+//로그창에 대한 클래스
+class LogDBRecyclerAdapter:RecyclerView.Adapter<LogDBRecyclerAdapter.Holder>() {
     // 리사이클러뷰는 리사이클러뷰어댑터라는 메서드 어댑터를 사용해서 데이터 연결해야함
-    var listData = ArrayList<Logging>()  //어댑터에서 사용할 데이터 목록 변수
-    var helper:MainLogHelper? = null //현 프로그램의 전반적인 DB를 관리하기 위한 클래스
+    var listData = mutableListOf<Logging>()  //어댑터에서 사용할 데이터 목록 변수
+    var helper:LogDBHelper? = null //현 프로그램의 전반적인 DB를 관리하기 위한 클래스
 
 
     //한 화면에 그려지는 아이템 개수만큼 레이아웃 생성 ex)한화면에 6줄이 보이면 6번 호출
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val binding = ItemRecyclerBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return Holder(binding) //생성된 binding을 Holder 클래스에 담아서 반환
+        return Holder(binding) //생성된 binding 을 Holder 클래스에 담아서 반환
     }
 
 
@@ -39,17 +39,17 @@ class MainDBRecyclerAdapter:RecyclerView.Adapter<MainDBRecyclerAdapter.Holder>()
 
 
     inner class Holder(val binding:ItemRecyclerBinding) : RecyclerView.ViewHolder(binding.root) {
-        //Holder: 화면에 보여지는 개수 만큼만 뷰홀더를 생성 (ViewHolder클래스 상속받으며, 어댑터에서 바인딩을 생성한 후에 뷰 홀더에 넘겨줌)
+        //Holder: 화면에 보여지는 개수 만큼만 뷰홀더를 생성 (ViewHolder 클래스를 상속받으며, 어댑터에서 바인딩을 생성한 후에 뷰 홀더에 넘겨줌)
         //        목록을 위로 스크롤 할 경우 가장 위의 뷰홀더를 가장 아래 뷰 홀더에서 가져와 데이터만 바꿔주는 역할
         //        =>앱의 효율을 상승
         lateinit var curLogging:Logging //클릭하는시점에 어떤 데이터를 삭제할 것인지 위치를 알기위한 변수
 
 
-        //생성자: 삭제버튼을 누르면 helper와 listData에 접근하여 삭제하고 어댑터 갱신
+        //생성자: 삭제버튼을 누르면 helper 와 listData 에 접근하여 삭제하고 어댑터 갱신
         init{
             binding.btndel.setOnClickListener {
                 if (helper == null)
-                helper?.delete(curLogging) //DB에서 mLogging에 해당하는 정보를 제거
+                helper?.delete(curLogging) //DB 에서 curLogging 에 해당하는 정보를 제거
                 listData.remove(curLogging)
                 notifyDataSetChanged() //리스트 업데이트
             }
@@ -61,7 +61,7 @@ class MainDBRecyclerAdapter:RecyclerView.Adapter<MainDBRecyclerAdapter.Holder>()
             binding.textid.text = "${logging.id}"
             binding.textContent2.text = logging.content
             val sdf = SimpleDateFormat("yyyy/MM/dd hh:mm") //현재 시간
-            binding.textDatetime.text = "${sdf.format(logging.datetime)}" //뷰에서 시간 text를 수정
+            binding.textDatetime.text = "${sdf.format(logging.datetime)}" //뷰에서 시간 text 를 수정
             this.curLogging = logging
         }
     }
@@ -72,14 +72,14 @@ class MainDBRecyclerAdapter:RecyclerView.Adapter<MainDBRecyclerAdapter.Holder>()
 //다이어리에 대한 클래스
 class DiaryDBRecyclerAdapter: RecyclerView.Adapter<DiaryDBRecyclerAdapter.Holder>() {
     // 리사이클러뷰는 리사이클러뷰어댑터라는 메서드 어댑터를 사용해서 데이터 연결해야함
-    var listData = mutableListOf<Memo>() //어댑터에서 사용할 데이터 목록 변수
-    lateinit var helper: MemoDBHelper //다이어리의 DB를 관리하기 위한 클래스
+    var listData = mutableListOf<Diarying>() //어댑터에서 사용할 데이터 목록 변수
+    lateinit var helper: DiaryDBHelper //다이어리의 DB를 관리하기 위한 클래스
 
 
     //한 화면에 그려지는 아이템 개수만큼 레이아웃 생성 ex)한화면에 6줄이 보이면 6번 호출
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val binding = ItemDiarychartBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return Holder(binding) //생성된 binding을 Holder 클래스에 담아서 반환
+        return Holder(binding) //생성된 binding 을 Holder 클래스에 담아서 반환
     }
 
 
@@ -91,34 +91,34 @@ class DiaryDBRecyclerAdapter: RecyclerView.Adapter<DiaryDBRecyclerAdapter.Holder
 
     //생성된 아이템 레이아웃에 값 입력후 목록(화면)에 출력
     override fun onBindViewHolder(holder: Holder, index: Int) {
-        holder.setMemo(listData.get(index))
+        holder.setMemo(listData[index])
     }
 
 
     inner class Holder(val binding: ItemDiarychartBinding): RecyclerView.ViewHolder(binding.root) {
-        //Holder: 화면에 보여지는 개수 만큼만 뷰홀더를 생성 (ViewHolder클래스 상속받으며, 어댑터에서 바인딩을 생성한 후에 뷰 홀더에 넘겨줌)
+        //Holder: 화면에 보여지는 개수 만큼만 뷰홀더를 생성 (ViewHolder 클래스를 상속받으며, 어댑터에서 바인딩을 생성한 후에 뷰 홀더에 넘겨줌)
         //        목록을 위로 스크롤 할 경우 가장 위의 뷰홀더를 가장 아래 뷰 홀더에서 가져와 데이터만 바꿔주는 역할
         //        =>앱의 효율을 상승
-        lateinit var curMemo: Memo //클릭하는시점에 어떤 데이터를 삭제할 것인지 위치를 알기위한 변수
+        lateinit var curDiarying: Diarying //클릭하는시점에 어떤 데이터를 삭제할 것인지 위치를 알기위한 변수
 
 
-        //생성자: 삭제버튼을 누르면 helper와 listData에 접근하여 삭제하고 어댑터 갱신
+        //생성자: 삭제버튼을 누르면 helper 와 listData 에 접근하여 삭제하고 어댑터 갱신
         init {
             binding.btndelete.setOnClickListener {
-                helper.delete(curMemo) //DB에서 mLogging에 해당하는 정보를 제거
-                listData.remove(curMemo)
+                helper.delete(curDiarying) //DB 에서 curDiarying 에 해당하는 정보를 제거
+                listData.remove(curDiarying)
                 notifyDataSetChanged() //리스트 업데이트
             }
         }
 
 
         //화면에 데이터를 세팅
-        fun setMemo(memo: Memo) {
-            binding.recordnum.text = "${memo.id}"
-            binding.record.text = memo.content
+        fun setMemo(diarying: Diarying) {
+            binding.recordnum.text = "${diarying.id}"
+            binding.record.text = diarying.content
             val sdf = SimpleDateFormat("yyyy/MM/dd hh:mm") //현재 시간
-            binding.recordDate.text = "${sdf.format(memo.datetime)}" //뷰에서 시간 text를 수정
-            this.curMemo = memo
+            binding.recordDate.text = "${sdf.format(diarying.datetime)}" //뷰에서 시간 text를 수정
+            this.curDiarying = diarying
         }
     }
 }

@@ -1,11 +1,8 @@
 package com.example.farmmanager
 
-import android.database.sqlite.SQLiteOpenHelper
-import android.os.Build.VERSION_CODES.S
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewbinding.ViewBinding
 import com.example.farmmanager.databinding.ActivityDiaryBinding
 
 
@@ -13,7 +10,7 @@ import com.example.farmmanager.databinding.ActivityDiaryBinding
 class DiaryActivity : AppCompatActivity() {
 
     val binding by lazy { ActivityDiaryBinding.inflate(layoutInflater) }
-    val helper = MemoDBHelper(this, "memo", null ,1)
+    val helper = DiaryDBHelper(this, "memo", null ,1)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +24,9 @@ class DiaryActivity : AppCompatActivity() {
 
         binding.btsave.setOnClickListener {
             if (binding.typingdiary.text.toString().isNotEmpty()) {
-                val memo = Memo(null, binding.typingdiary.text.toString(), System.currentTimeMillis())
+                val diarying = Diarying(null, binding.typingdiary.text.toString(), System.currentTimeMillis())
 
-                helper.insertMemo(memo)
+                helper.insertMemo(diarying)
 
                 adapter.listData.clear()
                 adapter.listData.addAll(helper.selectMemo())

@@ -1,26 +1,30 @@
 package com.example.farmmanager
 
+
+
 import androidx.appcompat.app.AppCompatActivity //MainActivity가 상속받을 클래스
 import android.os.Bundle //MainActivity가 받을 자료형 클래스
 import android.widget.SeekBar
+import com.example.farmmanager.GlobalVariables as G
 import com.example.farmmanager.databinding.ActivityBatBinding //databing(레이아웃 연동)을 위한 클래스
+
+
 
 class BatActivity : AppCompatActivity() {
 
     val binding by lazy { ActivityBatBinding.inflate(layoutInflater) }
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val helper = MainLogHelper(this,"logging",null,1) //현 프로그램의 전반적인 DB를 관리하기 위한 클래스
-        val adapter = MainDBRecyclerAdapter() //리사클러뷰를 사용하기 위한 클래스
+//        val helper = LogDBHelper(this,"logging",null,1) //현 프로그램의 전반적인 DB를 관리하기 위한 클래스
+//        val adapter = LogDBRecyclerAdapter() //리사클러뷰를 사용하기 위한 클래스
 
         //값 초기화
-        binding.TextHL1.setText(MainActivity.humity_in.toString())
-        binding.textHL.text = MainActivity.humity_out.toString()
+        binding.TextHL1.setText(G.humityTarget.toString())
+        binding.textHL.text = G.humityReal.toString()
 
         //[seekbar2]에 대한 바인딩
         binding.seekBar2.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
