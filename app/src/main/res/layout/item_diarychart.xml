@@ -7,27 +7,26 @@
 
     <TextView
         android:id="@+id/record"
-        android:layout_width="261dp"
-        android:layout_height="53dp"
-        android:layout_marginEnd="20dp"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
         android:background="#BDBEC5"
         android:text="성장일지 표시"
-        app:layout_constraintBottom_toTopOf="@+id/recordDate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/recordnum"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/recordnum"
         android:layout_width="39dp"
-        android:layout_height="35dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="20dp"
         android:background="#085DA1"
         android:gravity="center"
         android:text="01"
         android:textColor="#CFD8DC"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/record"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,7 +34,9 @@
         android:id="@+id/btndelete"
         android:layout_width="75dp"
         android:layout_height="59dp"
+        android:layout_marginStart="13dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
         android:backgroundTint="#FFC107"
         android:text="삭제"
         android:textColor="#0C0C0C"
@@ -46,11 +47,13 @@
 
     <TextView
         android:id="@+id/recordDate"
-        android:layout_width="193dp"
+        android:layout_width="260dp"
         android:layout_height="18dp"
+        android:layout_marginBottom="12dp"
         android:background="#8E8686"
         android:text="2022.9.6."
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/record"
+        app:layout_constraintTop_toBottomOf="@+id/record"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

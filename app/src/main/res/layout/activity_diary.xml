@@ -9,44 +9,50 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/diarychart"
-        android:layout_width="412dp"
-        android:layout_height="480dp"
+        android:layout_width="408dp"
+        android:layout_height="425dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/typingdiary" />
 
     <EditText
         android:id="@+id/typingdiary"
-        android:layout_width="276dp"
-        android:layout_height="82dp"
-        android:layout_marginEnd="70dp"
+        android:layout_width="237dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="84dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/diarychart" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btsave"
-        android:layout_width="91dp"
-        android:layout_height="80dp"
+        android:layout_width="105dp"
+        android:layout_height="54dp"
         android:backgroundTint="#FFEB3B"
         android:text="저장"
         android:textColor="#100F0F"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.217"
         app:layout_constraintStart_toEndOf="@+id/typingdiary"
-        app:layout_constraintTop_toBottomOf="@+id/diarychart" />
+        app:layout_constraintTop_toTopOf="@+id/typingdiary" />
 
     <Button
         android:id="@+id/btout"
         android:layout_width="230dp"
         android:layout_height="60dp"
-        android:layout_marginTop="20dp"
         android:backgroundTint="#FF9800"
         android:text="나가기"
         android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/typingdiary" />
+        app:layout_constraintTop_toBottomOf="@+id/diarychart"
+        app:layout_constraintVertical_bias="0.323" />
 </androidx.constraintlayout.widget.ConstraintLayout>

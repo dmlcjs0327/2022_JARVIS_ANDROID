@@ -7,6 +7,19 @@
     android:background="@drawable/bg1"
     tools:context=".CctvActivity">
 
+    <Switch
+        android:id="@+id/switchAlert3"
+        android:layout_width="306dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:background="#FA0303"
+        android:text="       사이렌 울리기"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/videoView"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
     <Button
         android:id="@+id/btnBack3"
         android:layout_width="230dp"
@@ -17,63 +30,20 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btSound3"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/switchAlert3"
+        app:layout_constraintVertical_bias="0.522" />
 
     <WebView
         android:id="@+id/videoView"
         android:layout_width="385dp"
         android:layout_height="269dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="112dp"
+        android:background="#000000"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.384"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btSound3"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#DC1709"
-        android:text="소리3"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#191010"
-        app:layout_constraintBottom_toTopOf="@+id/btnBack3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btSound2" />
-
-    <Button
-        android:id="@+id/btSound2"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#E11708"
-        android:text="소리2"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#0B0707"
-        app:layout_constraintBottom_toTopOf="@+id/btSound3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btSound1" />
-
-    <Button
-        android:id="@+id/btSound1"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="#E31C0E"
-        android:text="소리1"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#1E1313"
-        app:layout_constraintBottom_toTopOf="@+id/btSound2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/videoView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
