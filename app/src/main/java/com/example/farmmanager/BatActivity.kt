@@ -10,13 +10,15 @@ import com.example.farmmanager.databinding.ActivityBatBinding //databing(레이�
 class BatActivity : AppCompatActivity() {
 
     val binding by lazy { ActivityBatBinding.inflate(layoutInflater) }
-    val helper = SqliteHelper(this,"logging",null,1)
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val adapter = RecyclerAdapter()
+        val helper = MainDBHelper(this,"logging",null,1) //현 프로그램의 전반적인 DB를 관리하기 위한 클래스
+        val adapter = RecyclerAdapter() //리사클러뷰를 사용하기 위한 클래스
 
         //값 초기화
         binding.TextHL1.setText(MainActivity.humity_in.toString())
