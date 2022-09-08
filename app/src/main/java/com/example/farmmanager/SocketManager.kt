@@ -6,6 +6,7 @@ package com.example.farmmanager
 import android.util.Log
 import java.io.*
 import java.net.Socket
+
 import com.example.farmmanager.GlobalVariables as G
 
 
