@@ -2,9 +2,7 @@ package com.example.farmmanager
 
 import androidx.appcompat.app.AppCompatActivity //MainActivity가 상속받을 클래스
 import android.os.Bundle //MainActivity가 받을 자료형 클래스
-import android.util.Log
 import android.widget.SeekBar
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.farmmanager.databinding.ActivityBatBinding //databing(레이아웃 연동)을 위한 클래스
 
 class BatActivity : AppCompatActivity() {
@@ -17,7 +15,7 @@ class BatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val helper = MainDBHelper(this,"logging",null,1) //현 프로그램의 전반적인 DB를 관리하기 위한 클래스
+        val helper = MainLogHelper(this,"logging",null,1) //현 프로그램의 전반적인 DB를 관리하기 위한 클래스
         val adapter = MainDBRecyclerAdapter() //리사클러뷰를 사용하기 위한 클래스
 
         //값 초기화

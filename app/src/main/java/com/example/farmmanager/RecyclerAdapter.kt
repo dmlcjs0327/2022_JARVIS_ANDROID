@@ -1,4 +1,7 @@
+//RecyclerView 를 사용할 수 있게 해주는 클래스 모음: MainDBRecyclerAdapter, DiaryDBRecyclerAdapter
 package com.example.farmmanager
+
+
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,10 +10,13 @@ import com.example.farmmanager.databinding.ItemDiarychartBinding
 import com.example.farmmanager.databinding.ItemRecyclerBinding
 import java.text.SimpleDateFormat
 
-// 리사이클러뷰는 리사이클러뷰어댑터라는 메서드 어댑터를 사용해서 데이터 연결해야함
+
+
+//메인 로그창에 대한 클래스
 class MainDBRecyclerAdapter:RecyclerView.Adapter<MainDBRecyclerAdapter.Holder>() {
+    // 리사이클러뷰는 리사이클러뷰어댑터라는 메서드 어댑터를 사용해서 데이터 연결해야함
     var listData = ArrayList<Logging>()  //어댑터에서 사용할 데이터 목록 변수
-    var helper:MainDBHelper? = null //현 프로그램의 전반적인 DB를 관리하기 위한 클래스
+    var helper:MainLogHelper? = null //현 프로그램의 전반적인 DB를 관리하기 위한 클래스
 
 
     //한 화면에 그려지는 아이템 개수만큼 레이아웃 생성 ex)한화면에 6줄이 보이면 6번 호출
@@ -36,14 +42,15 @@ class MainDBRecyclerAdapter:RecyclerView.Adapter<MainDBRecyclerAdapter.Holder>()
         //Holder: 화면에 보여지는 개수 만큼만 뷰홀더를 생성 (ViewHolder클래스 상속받으며, 어댑터에서 바인딩을 생성한 후에 뷰 홀더에 넘겨줌)
         //        목록을 위로 스크롤 할 경우 가장 위의 뷰홀더를 가장 아래 뷰 홀더에서 가져와 데이터만 바꿔주는 역할
         //        =>앱의 효율을 상승
-        var mLogging:Logging? = null //클릭하는시점에 어떤 데이터를 삭제할 것인지 위치를 알기위한 변수
+        lateinit var curLogging:Logging //클릭하는시점에 어떤 데이터를 삭제할 것인지 위치를 알기위한 변수
 
 
         //생성자: 삭제버튼을 누르면 helper와 listData에 접근하여 삭제하고 어댑터 갱신
         init{
             binding.btndel.setOnClickListener {
-                helper?.delete(mLogging!!) //DB에서 mLogging에 해당하는 정보를 제거
-                listData.remove(mLogging)
+                if (helper == null)
+                helper?.delete(curLogging) //DB에서 mLogging에 해당하는 정보를 제거
+                listData.remove(curLogging)
                 notifyDataSetChanged() //리스트 업데이트
             }
         }
@@ -55,16 +62,18 @@ class MainDBRecyclerAdapter:RecyclerView.Adapter<MainDBRecyclerAdapter.Holder>()
             binding.textContent2.text = logging.content
             val sdf = SimpleDateFormat("yyyy/MM/dd hh:mm") //현재 시간
             binding.textDatetime.text = "${sdf.format(logging.datetime)}" //뷰에서 시간 text를 수정
-            this.mLogging = logging
+            this.curLogging = logging
         }
     }
 }
 
 
 
+//다이어리에 대한 클래스
 class DiaryDBRecyclerAdapter: RecyclerView.Adapter<DiaryDBRecyclerAdapter.Holder>() {
+    // 리사이클러뷰는 리사이클러뷰어댑터라는 메서드 어댑터를 사용해서 데이터 연결해야함
     var listData = mutableListOf<Memo>() //어댑터에서 사용할 데이터 목록 변수
-    var helper: MemoDBHelper? = null //다이어리의 DB를 관리하기 위한 클래스
+    lateinit var helper: MemoDBHelper //다이어리의 DB를 관리하기 위한 클래스
 
 
     //한 화면에 그려지는 아이템 개수만큼 레이아웃 생성 ex)한화면에 6줄이 보이면 6번 호출
@@ -85,18 +94,19 @@ class DiaryDBRecyclerAdapter: RecyclerView.Adapter<DiaryDBRecyclerAdapter.Holder
         holder.setMemo(listData.get(index))
     }
 
+
     inner class Holder(val binding: ItemDiarychartBinding): RecyclerView.ViewHolder(binding.root) {
         //Holder: 화면에 보여지는 개수 만큼만 뷰홀더를 생성 (ViewHolder클래스 상속받으며, 어댑터에서 바인딩을 생성한 후에 뷰 홀더에 넘겨줌)
         //        목록을 위로 스크롤 할 경우 가장 위의 뷰홀더를 가장 아래 뷰 홀더에서 가져와 데이터만 바꿔주는 역할
         //        =>앱의 효율을 상승
-        var mMemo: Memo? = null //클릭하는시점에 어떤 데이터를 삭제할 것인지 위치를 알기위한 변수
+        lateinit var curMemo: Memo //클릭하는시점에 어떤 데이터를 삭제할 것인지 위치를 알기위한 변수
 
 
         //생성자: 삭제버튼을 누르면 helper와 listData에 접근하여 삭제하고 어댑터 갱신
         init {
             binding.btndelete.setOnClickListener {
-                helper?.delete(mMemo!!) //DB에서 mLogging에 해당하는 정보를 제거
-                listData.remove(mMemo)
+                helper.delete(curMemo) //DB에서 mLogging에 해당하는 정보를 제거
+                listData.remove(curMemo)
                 notifyDataSetChanged() //리스트 업데이트
             }
         }
@@ -108,7 +118,7 @@ class DiaryDBRecyclerAdapter: RecyclerView.Adapter<DiaryDBRecyclerAdapter.Holder
             binding.record.text = memo.content
             val sdf = SimpleDateFormat("yyyy/MM/dd hh:mm") //현재 시간
             binding.recordDate.text = "${sdf.format(memo.datetime)}" //뷰에서 시간 text를 수정
-            this.mMemo = memo
+            this.curMemo = memo
         }
     }
 }
