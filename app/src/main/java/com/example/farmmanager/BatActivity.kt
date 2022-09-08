@@ -19,12 +19,12 @@ class BatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-//        val helper = LogDBHelper(this,"logging",null,1) //현 프로그램의 전반적인 DB를 관리하기 위한 클래스
-//        val adapter = LogDBRecyclerAdapter() //리사클러뷰를 사용하기 위한 클래스
+        val helper = MainActivity.logHelper
+        val adapter = MainActivity.logAdapter
 
         //값 초기화
-        binding.TextHL1.setText(G.humityTarget.toString())
-        binding.textHL.text = G.humityReal.toString()
+        binding.TextHL1.setText(G.humityTarget.toString()) //목표 습도
+        binding.textHL.text = G.humityReal.toString() //실제 습도
 
         //[seekbar2]에 대한 바인딩
         binding.seekBar2.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{

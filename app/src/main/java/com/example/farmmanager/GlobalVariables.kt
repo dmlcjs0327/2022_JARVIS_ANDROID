@@ -14,10 +14,12 @@ object GlobalVariables {
     var tOdd = 0 //수위탱크 상태 / 0: 정상, 1: 이상
     var sOdd = 0 //스프링쿨러 상태 / 0: 정상, 1: 이상
 
-    //전송할 정보(습도,경보,캡처)
+    //전송할 정보(습도,경보,모터,캡처)
     var humityTarget = 50 //목표 습도(앱에서 설정하는 습도)
     var sirenOption = 0 //사이렌 울리기 / 0: 안울림, 1: 울림)
+    var motorOption = 0 //스프링쿨러 가동 / 0: 기본, 1: 가동)
     var captureOption = 0 //캡처주기 / 0: 끄기, 숫자: 하루 중 캡처할 빈도
+
 
     //소켓 관련
     val interval = 1000L //스레드를 정지할 시간 (밀리초)

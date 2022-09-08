@@ -150,11 +150,11 @@ class SocketSender : Thread() {
         if(!SocketClient.IsConnectRun) SocketClient.connect() //소켓 생성 및 연결
 
         //data 전송(습도,경보,캡처)
-        val data = "${G.humityTarget},${G.sirenOption},${G.captureOption}"
+        val data = "${G.humityTarget},${G.sirenOption},${G.motorOption},${G.captureOption}"
         SocketClient.sendData(data)
         Log.d("LOG_[SocketSender]","[SocketSender] 전송한 데이터: $data")
         G.toast("[SocketSender] 전송 성공")
 
-        Log.d("LUC_TAG","SocketSender 종료")
+        Log.d("LOG_[SocketSender]","[SocketSender] 종료")
     }
 }
