@@ -24,11 +24,10 @@
 
     <WebView
         android:id="@+id/videoView"
-        android:layout_width="413dp"
-        android:layout_height="295dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="385dp"
+        android:layout_height="269dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
