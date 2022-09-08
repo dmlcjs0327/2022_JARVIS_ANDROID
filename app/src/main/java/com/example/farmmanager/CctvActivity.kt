@@ -16,7 +16,12 @@ class CctvActivity : AppCompatActivity() {
 
         binding.videoView.apply {
             webViewClient = WebViewClient()
-            settings.javaScriptEnabled = true
+            settings.useWideViewPort = true      // _09.04: wide 뷰포트 사용(넓게 보이기 위함)
+            settings.javaScriptEnabled = true    // _09.04: 자바 스크립트 허용
+            settings.loadWithOverviewMode = true // _09.04: 컨텐츠가 웹뷰보다 클 시 스크린에 맞게 조정
+            settings.builtInZoomControls = true  // _09.04: 웹뷰 줌 기능 사용
+            settings.supportZoom()               // _09.04: 웹뷰 줌 아이콘 사용
+            settings.displayZoomControls = false // _09.04: 줌컨트롤러가 안보이게 설정
 
             binding.videoView.loadUrl("https://www.naver.co.kr/")
         }
