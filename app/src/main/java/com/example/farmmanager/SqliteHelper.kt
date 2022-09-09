@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper
 
 
 //데이터를 튜플단위로 사용하기 위한 데이터클래스
-data class Global(var variable:Long, var value: String)
+data class Global(var id: Long?, var variable: String, var value: Int)
 data class Logging(var id:Long?, var content: String, var datetime:Long)
 data class Memo(var id: Long?, var content: String, var datetime: Long)
 
@@ -27,7 +27,7 @@ class MainDBHelper(context: Context?, name: String?, factory: SQLiteDatabase.Cur
     //onCreate: DB가 생성되어있지 않다면 이 메서드를 통해 DB 생성
     override fun onCreate(db: SQLiteDatabase?) {
         //테이블 생성 구문: main(id:long, content: text, datetime: long)
-        val create = "create table global (variable long primary key, value text)"
+        val create = "create table global (id long primary key, variable text ,value int)"
         db?.execSQL(create)
     }
 
@@ -44,7 +44,7 @@ class MainDBHelper(context: Context?, name: String?, factory: SQLiteDatabase.Cur
     fun select(): MutableList<Global> {
         val list = mutableListOf<Global>() //리턴할 리스트 생성
 
-        val cursor = readableDatabase.rawQuery("select * from global", null)
+        val cursor = readableDatabase.rawQuery("select variable,value from global order by id desc limit 1", null)
         //readableDatabase.rawQuery(): 쿼리를 담아서 실행하면 cursor 형태로 값이 반환
         //cursor: 데이터 요소 + DB 에서의 위치에 대한 데이터
         //따라서 커서를 사용하면 쿼리를 통해 데이터셋을 반복하며 하나씩 처리 가능
@@ -52,10 +52,11 @@ class MainDBHelper(context: Context?, name: String?, factory: SQLiteDatabase.Cur
         //moveToNext() 다음 줄에 사용가능한 레코드가 있으면 true 를 리턴하고 커서를 다음위치로 이동 / 없으면 false
         while (cursor.moveToNext()) {
             //테이블에 정의된 3개의 컬럼에서 값을 꺼낸 다음 변수에 담는다.
-            val variable = cursor.getLong(cursor.getColumnIndex("variable"))
-            val value = cursor.getString(cursor.getColumnIndex("value"))
+            val id = cursor.getLong(cursor.getColumnIndex("id"))
+            val variable = cursor.getString(cursor.getColumnIndex("variable"))
+            val value = cursor.getInt(cursor.getColumnIndex("value"))
 
-            list.add(Global(variable, value))
+            list.add(Global(id, variable, value))
         }
 
         cursor.close()
@@ -68,24 +69,20 @@ class MainDBHelper(context: Context?, name: String?, factory: SQLiteDatabase.Cur
     //insert: Logging 타입 매개변수를 받으면, 그 내부값들을 DB에 저장
     fun insert(global: Global) {
         val values = ContentValues() //ContentValues: db에 담을 데이터로 변환하는 클래스
-        values.put("variable", global.variable)
         values.put("value", global.value)
 
-        //DB의 logging 테이블에 ContentValues 내 정보들을 삽입
-        writableDatabase.insert("logging", null, values)
+        writableDatabase.insert("global", null, values)
         writableDatabase.close()
     }
 
+    fun update(global: Global) {
+        val values = ContentValues() //ContentValues: db에 담을 데이터로 변환하는 클래스
+        values.put("variable", global.variable)
+        values.put("value", global.value)
 
-    //update: DB의 데이터를 새로운 Logging 으로 갱신 => 메인로그는 갱신할 일이 없음
-//    fun update(logging: Logging) {
-//        val values = ContentValues() //ContentValues: db에 담을 데이터로 변환하는 클래스
-//        values.put("content", logging.content)
-//        values.put("datetime", logging.datetime)
-//
-//        writableDatabase.update("logging", values, "id=${logging.id}", null)
-//        writableDatabase.close()
-//    }
+        writableDatabase.update("logging", values, "id=${global.id}", null)
+        writableDatabase.close()
+    }
 
 
     //delete: Logging 타입 매개변수를 받으면, DB에서 일치하는 데이터를 제거
