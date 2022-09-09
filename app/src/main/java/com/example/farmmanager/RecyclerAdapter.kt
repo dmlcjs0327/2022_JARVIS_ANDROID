@@ -55,6 +55,13 @@ class LogDBRecyclerAdapter:RecyclerView.Adapter<LogDBRecyclerAdapter.Holder>() {
                 helper?.delete(curLogging!!) //DB 에서 curLogging 에 해당하는 정보를 제거
 
                 listData.remove(curLogging)
+
+                var i = 0L
+                for(data in listData){
+                    listData[i.toInt()].id = i
+                    helper?.updateID(data,i)
+                    i++
+                }
                 notifyDataSetChanged() //리스트 업데이트
             }
         }
@@ -113,6 +120,7 @@ class DiaryDBRecyclerAdapter: RecyclerView.Adapter<DiaryDBRecyclerAdapter.Holder
             binding.btndelete.setOnClickListener {
                 helper.delete(curDiarying!!) //DB 에서 curDiarying 에 해당하는 정보를 제거
                 listData.remove(curDiarying)
+
                 notifyDataSetChanged() //리스트 업데이트
             }
         }

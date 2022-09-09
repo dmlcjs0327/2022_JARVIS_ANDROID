@@ -12,8 +12,8 @@ import android.database.sqlite.SQLiteOpenHelper
 
 //데이터를 튜플단위로 사용하기 위한 데이터클래스
 data class Main(var variable:Long, var value: String)
-data class Logging(var id:Long?, var content: String, var datetime:Long)
-data class Diarying(var id: Long?, var content: String, var datetime: Long)
+data class Logging(var id:Long, var content: String, var datetime:Long)
+data class Diarying(var id: Long, var content: String, var datetime: Long)
 
 
 
@@ -151,6 +151,7 @@ class LogDBHelper(context: Context?, name: String?, factory: SQLiteDatabase.Curs
     //insert: Logging 타입 매개변수를 받으면, 그 내부값들을 DB에 저장
     fun insert(logging: Logging) {
         val values = ContentValues() //ContentValues: db에 담을 데이터로 변환하는 클래스
+        values.put("id", logging.id)
         values.put("content", logging.content)
         values.put("datetime", logging.datetime)
 
@@ -160,15 +161,13 @@ class LogDBHelper(context: Context?, name: String?, factory: SQLiteDatabase.Curs
     }
 
 
-    //update: DB의 데이터를 새로운 Logging 으로 갱신 => 메인로그는 갱신할 일이 없음
-//    fun update(logging: Logging) {
-//        val values = ContentValues() //ContentValues: db에 담을 데이터로 변환하는 클래스
-//        values.put("content", logging.content)
-//        values.put("datetime", logging.datetime)
-//
-//        writableDatabase.update("logging", values, "id=${logging.id}", null)
-//        writableDatabase.close()
-//    }
+    //updateAll: DB의 데이터의 id를 갱신
+    fun updateID(logging: Logging, id: Long) {
+        val values = ContentValues() //ContentValues: db에 담을 데이터로 변환하는 클래스
+        values.put("id", id)
+        writableDatabase.update("logging", values, "id=${logging.id}", null)
+        writableDatabase.close()
+    }
 
 
     //delete: Logging 타입 매개변수를 받으면, DB 에서 일치하는 데이터를 제거
@@ -234,6 +233,7 @@ class DiaryDBHelper(context: Context?, name: String?, factory: SQLiteDatabase.Cu
     //insert: Memo 타입 매개변수를 받으면, 그 내부값들을 DB에 저장
     fun insert(diarying: Diarying) {
         val values = ContentValues() //ContentValues: db에 담을 데이터로 변환하는 클래스
+        values.put("id", diarying.id)
         values.put("content", diarying.content)
         values.put("datetime", diarying.datetime)
 
@@ -252,6 +252,7 @@ class DiaryDBHelper(context: Context?, name: String?, factory: SQLiteDatabase.Cu
         writableDatabase.update("diarying", values, "id=${diarying.id}", null)
         writableDatabase.close()
     }
+
 
     //delete: Memo 타입 매개변수를 받으면, DB 에서 일치하는 데이터를 제거
     fun delete(diarying: Diarying) {

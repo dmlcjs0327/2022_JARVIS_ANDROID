@@ -14,7 +14,6 @@ import com.example.farmmanager.GlobalVariables as G
 import com.example.farmmanager.databinding.ActivityBatBinding //databing(레이아웃 연동)을 위한 클래스
 
 
-
 class BatActivity : AppCompatActivity() {
 
     val binding by lazy { ActivityBatBinding.inflate(layoutInflater) }
@@ -76,7 +75,8 @@ class BatActivity : AppCompatActivity() {
             G.toast("[BatActivity] 정보 전송 완료")
 
             if(binding.TextHL1.text.toString().isNotEmpty()){
-                val logging = Logging(null,binding.TextHL1.text.toString(),System.currentTimeMillis())
+                var id = (adapter.listData.size).toLong()
+                val logging = Logging(id,binding.TextHL1.text.toString(),System.currentTimeMillis())
                 helper.insert(logging)
                 adapter.listData.clear() //어뎁터의 데이터를 모두 초기화
                 adapter.listData.addAll(helper.select())

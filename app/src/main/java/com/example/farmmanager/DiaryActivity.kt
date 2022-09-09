@@ -37,7 +37,8 @@ class DiaryActivity : AppCompatActivity() {
 
         binding.btsave.setOnClickListener {
             if (binding.typingdiary.text.toString().isNotEmpty()) {
-                val diarying = Diarying(null, binding.typingdiary.text.toString(), System.currentTimeMillis())
+                var id = (adapter.listData.size).toLong()
+                val diarying = Diarying(id, binding.typingdiary.text.toString(), System.currentTimeMillis())
                 helper.insert(diarying)
                 adapter.listData.clear()
                 adapter.listData.addAll(helper.select())
