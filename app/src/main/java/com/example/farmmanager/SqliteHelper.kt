@@ -173,7 +173,7 @@ class LogDBHelper(context: Context?, name: String?, factory: SQLiteDatabase.Curs
 
     //delete: Logging 타입 매개변수를 받으면, DB 에서 일치하는 데이터를 제거
     fun delete(logging: Logging) {
-        val delete = "delete from memo where id = ${logging.id}"
+        val delete = "delete from logging where id = ${logging.id}"
 
         writableDatabase.execSQL(delete)
         writableDatabase.close()
@@ -191,7 +191,7 @@ class DiaryDBHelper(context: Context?, name: String?, factory: SQLiteDatabase.Cu
 
     //onCreate: DB가 생성되어있지 않다면 이 메서드를 통해 DB생성
     override fun onCreate(db: SQLiteDatabase?) {
-        //테이블 생성 구문: memo(id:long, content: text, datetime: long)
+        //테이블 생성 구문: logging(id:long, content: text, datetime: long)
         val create = "create table diarying (id long primary key,content text,datetime long)"
         db?.execSQL(create)
     }
@@ -253,7 +253,7 @@ class DiaryDBHelper(context: Context?, name: String?, factory: SQLiteDatabase.Cu
         writableDatabase.close()
     }
 
-    //delete: Memo 타입 매개변수를 받으면, DB에서 일치하는 데이터를 제거
+    //delete: Memo 타입 매개변수를 받으면, DB 에서 일치하는 데이터를 제거
     fun delete(diarying: Diarying) {
         val delete = "delete from diarying where id = ${diarying.id}"
 

@@ -4,11 +4,13 @@ package com.example.farmmanager
 
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.farmmanager.databinding.ItemDiarychartBinding
 import com.example.farmmanager.databinding.ItemRecyclerBinding
+import com.example.farmmanager.GlobalVariables as G
 import java.text.SimpleDateFormat
 
 
@@ -44,13 +46,14 @@ class LogDBRecyclerAdapter:RecyclerView.Adapter<LogDBRecyclerAdapter.Holder>() {
         //Holder: 화면에 보여지는 개수 만큼만 뷰홀더를 생성 (ViewHolder 클래스를 상속받으며, 어댑터에서 바인딩을 생성한 후에 뷰 홀더에 넘겨줌)
         //        목록을 위로 스크롤 할 경우 가장 위의 뷰홀더를 가장 아래 뷰 홀더에서 가져와 데이터만 바꿔주는 역할
         //        =>앱의 효율을 상승
-        lateinit var curLogging:Logging //클릭하는시점에 어떤 데이터를 삭제할 것인지 위치를 알기위한 변수
+        var curLogging:Logging? = null //클릭하는시점에 어떤 데이터를 삭제할 것인지 위치를 알기위한 변수
 
 
         //생성자: 삭제버튼을 누르면 helper 와 listData 에 접근하여 삭제하고 어댑터 갱신
         init{
             binding.btndel.setOnClickListener {
-                helper?.delete(curLogging) //DB 에서 curLogging 에 해당하는 정보를 제거
+                helper?.delete(curLogging!!) //DB 에서 curLogging 에 해당하는 정보를 제거
+
                 listData.remove(curLogging)
                 notifyDataSetChanged() //리스트 업데이트
             }
@@ -102,13 +105,13 @@ class DiaryDBRecyclerAdapter: RecyclerView.Adapter<DiaryDBRecyclerAdapter.Holder
         //Holder: 화면에 보여지는 개수 만큼만 뷰홀더를 생성 (ViewHolder 클래스를 상속받으며, 어댑터에서 바인딩을 생성한 후에 뷰 홀더에 넘겨줌)
         //        목록을 위로 스크롤 할 경우 가장 위의 뷰홀더를 가장 아래 뷰 홀더에서 가져와 데이터만 바꿔주는 역할
         //        =>앱의 효율을 상승
-        lateinit var curDiarying: Diarying //클릭하는시점에 어떤 데이터를 삭제할 것인지 위치를 알기위한 변수
+        var curDiarying: Diarying? = null //클릭하는시점에 어떤 데이터를 삭제할 것인지 위치를 알기위한 변수
 
 
         //생성자: 삭제버튼을 누르면 helper 와 listData 에 접근하여 삭제하고 어댑터 갱신
         init {
             binding.btndelete.setOnClickListener {
-                helper.delete(curDiarying) //DB 에서 curDiarying 에 해당하는 정보를 제거
+                helper.delete(curDiarying!!) //DB 에서 curDiarying 에 해당하는 정보를 제거
                 listData.remove(curDiarying)
                 notifyDataSetChanged() //리스트 업데이트
             }

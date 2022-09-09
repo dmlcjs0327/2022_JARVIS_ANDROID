@@ -27,7 +27,6 @@ class SocketClient : Serializable {
         //소켓 생성 및 연결
         fun connect() {
             Log.d("LOG_[SocketClient]","[connect] 시작")
-            IsConnectRun = true
 
             while(true){
                 try {
@@ -41,6 +40,7 @@ class SocketClient : Serializable {
 
                     Log.d("LOG_[SocketClient]","[connect] 성공")
                     G.toast("[connect] 성공")
+                    IsConnectRun = true
                     break
                 }
 

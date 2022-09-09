@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity //MainActivity가 상속받을 �
 import android.os.Bundle //MainActivity가 받을 자료형 클래스
 import com.example.farmmanager.databinding.ActivityMainBinding //databing(레이아웃 연동)을 위한 클래스
 import android.content.Intent
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 
 
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root) //setContentView 에는 binding.root 를 꼭 전달
         SocketReceiver().start() //SocketReceiver 시작
+        Log.d("LOG_[MainActivity]","[MainActivity]  시작")
 
         //로그에 대한 sql helper & 리사이클러뷰에 대한 adapter 설정
         logAdapter.listData.addAll(logHelper.select()) //adapter 의 listData 에 DB 에서 가져온 데이터를 세팅
