@@ -83,21 +83,7 @@ class MainDBHelper(context: Context?, name: String?, factory: SQLiteDatabase.Cur
         writableDatabase.update("logging", values, "id=${global.id}", null)
         writableDatabase.close()
     }
-
-
-    //delete: Logging 타입 매개변수를 받으면, DB에서 일치하는 데이터를 제거
-    fun delete(logging: Logging) {
-        val delete = "delete from memo where id = ${logging.id}"
-
-        writableDatabase.execSQL(delete)
-        writableDatabase.close()
-    }
 }
-
-
-
-
-
 
 
 //로그 DB 를 관리하기 위한 클래스
