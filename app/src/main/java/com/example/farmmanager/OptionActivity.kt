@@ -24,12 +24,12 @@ class OptionActivity : AppCompatActivity() {
             if(isChecked){
                 G.alarmOn = 1
                 Log.d("LOG_[OptionActivity]","[OptionActivity] 푸시 ON")
-                G.toast("[OptionActivity] 푸시 ON")
+                //G.toast("[OptionActivity] 푸시 ON")
             }
             else {
                 G.alarmOn = 0
                 Log.d("LOG_[OptionActivity]","[OptionActivity] 푸시 OFF")
-                G.toast("[OptionActivity] 푸시 OFF")
+                //G.toast("[OptionActivity] 푸시 OFF")
             }
         }
 

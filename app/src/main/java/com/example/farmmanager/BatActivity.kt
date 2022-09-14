@@ -72,7 +72,7 @@ class BatActivity : AppCompatActivity() {
             SocketSender().start()//정보 전송
             SocketSender().join()
             Log.d("LOG_[BatActivity]","[BatActivity] 정보 전송")
-            G.toast("[BatActivity] 정보 전송 완료")
+            //G.toast("[BatActivity] 정보 전송 완료")
 
             if(binding.TextHL1.text.toString().isNotEmpty()){
                 var id = (adapter.listData.size).toLong()
@@ -92,14 +92,14 @@ class BatActivity : AppCompatActivity() {
                 SocketSender().start()//정보 전송
                 SocketSender().join()
                 Log.d("LOG_[BatActivity]","[BatActivity] 모터 강제 작동 시작")
-                G.toast("[BatActivity] 모터 강제 작동 시작")
+                //G.toast("[BatActivity] 모터 강제 작동 시작")
             }
             else {
                 G.motorOption = 0
                 SocketSender().start()//정보 전송
                 SocketSender().join()
                 Log.d("LOG_[BatActivity]","[BatActivity] 모터 강제 작동 중지")
-                G.toast("[BatActivity] 모터 강제 작동 중지")
+                //G.toast("[BatActivity] 모터 강제 작동 중지")
             }
         }
 

@@ -27,12 +27,16 @@ class CctvActivity : AppCompatActivity() {
             if(isChecked){
                 G.sirenOption = 1
                 Log.d("LOG_[CctvActivity]","[CctvActivity] 사이렌 ON")
-                G.toast("[CctvActivity] 사이렌 ON")
+                //G.toast("[CctvActivity] 사이렌 ON")
+                SocketSender().start()//정보 전송
+                SocketSender().join()
             }
             else {
                 G.sirenOption = 0
                 Log.d("LOG_[CctvActivity]","[CctvActivity] 사이렌 OFF")
-                G.toast("[CctvActivity] 사이렌 OFF")
+                //G.toast("[CctvActivity] 사이렌 OFF")
+                SocketSender().start()//정보 전송
+                SocketSender().join()
             }
         }
 

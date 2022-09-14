@@ -45,7 +45,7 @@ class DiaryActivity : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
                 binding.typingdiary.setText("")
                 Log.d("LOG_[DiaryActivity]","[DiaryActivity] 다이어리 저장")
-                GlobalVariables.toast("[DiaryActivity] 다이어리 저장")
+                //GlobalVariables.toast("[DiaryActivity] 다이어리 저장")
             }
         }
 
