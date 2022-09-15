@@ -3,14 +3,19 @@ package com.example.farmmanager
 
 
 
+import android.os.FileObserver.CREATE
 import android.util.Log
 import java.io.*
 import java.net.Socket
+import java.nio.Buffer
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.nio.file.StandardCopyOption
 import java.text.SimpleDateFormat
 import java.util.*
 
 import com.example.farmmanager.GlobalVariables as G
-
+import java.io.OutputStream as OutputStream1
 
 
 class SocketFileClient : Serializable {
@@ -20,7 +25,7 @@ class SocketFileClient : Serializable {
         lateinit var inputStream: InputStream //데이터를 받아오는 통로
         lateinit var datainputStream: DataInputStream //데이터를 받아오는 통로에 대한 래퍼
 
-        lateinit var outputStream: OutputStream //데이터를 보낼 통로
+        lateinit var outputStream: OutputStream1 //데이터를 보낼 통로
         lateinit var dataoutputStream: DataOutputStream //데이터를 보낼 통로에 대한 래퍼
 
         var IsConnectRun = false
@@ -139,21 +144,35 @@ class SocketFileSender : Thread() {
             SocketFileClient.sendData("start")
             Log.d("LOG[SocketFileReceiver]","[SocketFileReceiver] 사진 받기 시작")
 
-            val dir = File(G.directory)
-            if(!dir.exists()) {
-                dir.mkdirs()
-            }
+//            val dir = File(G.directory)
+//            if(!dir.exists()) {
+//                dir.mkdirs()
+//            }
+            Log.d("LOG[SocketFileReceiver]","[SocketFileReceiver] 경로 생성 성공")
 
             val curTime = SimpleDateFormat("yyyy_MM_dd_hh_mm", Locale.getDefault()).format(Calendar.getInstance().time)
-            val writer = FileWriter(G.directory +curTime+".png") //쓸 파일
-            val buffer = BufferedWriter(writer) //쓸 버퍼
+            val path = G.directory+"/"+curTime+".png"
 
-            var recvData: String? = null //받아올 데이터를 저장할 변수
+            val file = File(path)
+            if(!file.exists()) {
+                file.mkdirs()
+            }
+            Log.d("LOG[SocketFileReceiver]","[SocketFileReceiver] $path")
+
+            //val file = File(path)
+            val printWriter = PrintWriter(file)
+
+            var recvData: ByteArray? = null //받아올 데이터를 저장할 변수
             while (recvData == null) {
-                recvData = SocketFileClient.read().toString()
-                buffer.write(recvData)
+                recvData = SocketFileClient.read()
+                try{
+                    printWriter.print(recvData)
+                }
+                catch (e: Exception){
+                    Log.d("LOG[SocketFileReceiver]","[SocketFileReceiver] 에러: $e")
+                }
             } //받아올 때까지 반복
-            buffer.close() //버퍼닫기
+            printWriter.close() //파일 닫기
         }
     }
 }

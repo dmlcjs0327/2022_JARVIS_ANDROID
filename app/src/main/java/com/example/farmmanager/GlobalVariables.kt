@@ -4,6 +4,8 @@ package com.example.farmmanager
 import android.content.Context
 import android.media.AudioManager
 import android.media.ToneGenerator
+import android.os.Environment
+import android.os.Environment.*
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -34,7 +36,7 @@ object GlobalVariables {
     val serverFilePort = 3033 //서버의 파일전송용 port
     var isSend = false //전송여부 확인
     val videoUrl = "http://${serverIP}:8081/?action=stream"
-    val directory = " /storage/emulated/0/Download/" //사진 저장 경로
+    val directory = DIRECTORY_DOWNLOADS //사진 저장 경로
 
 
 //    임시 메세지창을 띄우는 함수
