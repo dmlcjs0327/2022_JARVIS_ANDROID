@@ -2,6 +2,10 @@
 package com.example.farmmanager
 
 import android.content.Context
+import android.media.AudioManager
+import android.media.ToneGenerator
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 
@@ -13,6 +17,7 @@ object GlobalVariables {
     var humityReal = 50 //실제 습도(컨트롤러가 보내준 습도)
     var tOdd = 0 //수위탱크 상태 / 0: 정상, 1: 이상
     var sOdd = 0 //스프링쿨러 상태 / 0: 정상, 1: 이상
+    var motionDetected = 0 //모션 감지 상태 / 0: 기본, 1 감지
 
     //전송할 정보(습도,경보,모터,캡처)
     var humityTarget = 30 //목표 습도(앱에서 설정하는 습도)
@@ -27,8 +32,24 @@ object GlobalVariables {
     val serverPort = 3022 // 서버의 port
     val videoUrl = "http://${serverIP}:8081/?action=stream"
 
+
 //    임시 메세지창을 띄우는 함수
     fun toast(message: String) {
-        Toast.makeText(MainApplication.applicationContext(), message, Toast.LENGTH_SHORT).show()
+        Handler(Looper.getMainLooper()).post{
+            //Toast호출
+            Toast.makeText(MainApplication.applicationContext(),message,Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
+    fun toastBell(message: String) {
+        Handler(Looper.getMainLooper()).post{
+            //Toast호출
+            Toast.makeText(MainApplication.applicationContext(),message,Toast.LENGTH_SHORT).show()
+            //경고음 출력-이것도Thread 안에서 단순호출로는작동하지않는다.
+            val toneGen1= ToneGenerator(AudioManager.STREAM_MUSIC,100)
+            toneGen1.startTone(ToneGenerator.TONE_CDMA_ABBR_ALERT,300)
+        }
+        //Toast.makeText(MainApplication.applicationContext(), message, Toast.LENGTH_SHORT).show()
     }
 }
