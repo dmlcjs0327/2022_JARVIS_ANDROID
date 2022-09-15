@@ -9,14 +9,13 @@
 
     <Switch
         android:id="@+id/switchAlert2"
-        android:layout_width="306dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="14dp"
+        android:layout_width="365dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="12dp"
         android:background="#FA0303"
         android:text="       모터 강제 작동"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.352"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btHLset"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
@@ -94,15 +93,29 @@
 
     <Button
         android:id="@+id/btHLset"
-        android:layout_width="119dp"
-        android:layout_height="94dp"
+        android:layout_width="170dp"
+        android:layout_height="86dp"
         android:layout_marginTop="76dp"
         android:backgroundTint="#FFC107"
         android:text="설정 습도 전송"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#0B0A0A"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintHorizontal_bias="0.091"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/batHL1" />
+
+    <Button
+        android:id="@+id/btHLset2"
+        android:layout_width="170dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="76dp"
+        android:backgroundTint="#FF7B07"
+        android:text="식물 사진 캡처"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#0B0A0A"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.933"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/batHL1" />
 

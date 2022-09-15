@@ -23,14 +23,18 @@ object GlobalVariables {
     var humityTarget = 30 //목표 습도(앱에서 설정하는 습도)
     var sirenOption = 0 //사이렌 울리기 / 0: 안울림, 1: 울림)
     var motorOption = 0 //스프링쿨러 가동 / 0: 기본, 1: 가동)
-    var captureOption = 0 //캡처주기 / 0: 끄기, 숫자: 하루 중 캡처할 빈도
+
 
 
     //소켓 관련
     val interval = 1000L //스레드를 정지할 시간 (밀리초)
-    val serverIP = "192.168.24.110" // 서버의 IP
+    //val serverIP = "192.168.24.110" // 서버의 IP
+    val serverIP = "203.255.57.106"
     val serverPort = 3022 // 서버의 port
+    val serverFilePort = 3033 //서버의 파일전송용 port
+    var isSend = false //전송여부 확인
     val videoUrl = "http://${serverIP}:8081/?action=stream"
+    val directory = " /storage/emulated/0/Download/" //사진 저장 경로
 
 
 //    임시 메세지창을 띄우는 함수

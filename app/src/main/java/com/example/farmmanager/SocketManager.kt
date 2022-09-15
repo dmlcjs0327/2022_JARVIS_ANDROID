@@ -127,26 +127,31 @@ class SocketReceiver : Thread() {
     override fun run() { //스레드 실행 시 동작하는 코드
         Log.d("LOG_[SocketReceiver]","[SocketReceiver] 시작")
 
-        if(!SocketClient.IsConnectRun) SocketClient.connect() //소켓 생성 및 연결
+
 
         //data 받기 (습도,T이상,S이상,모션)
         while(true){
+            if(!SocketClient.IsConnectRun) SocketClient.connect() //소켓 생성 및 연결
+            if(!SocketClient.IsConnected){
+                Log.d("LOG_[SocketReceiver]","[SocketReceiver] connect 대기중..")
+                G.toast("[SocketReceiver] 연결 대기 중.. 잠시 후에 시도해주세요")
+            }
+            else{
+                Log.d("LOG_[SocketReceiver]","[SocketReceiver] 실행 중")
+                var recvData: String? = null //받아올 데이터를 저장할 변수
+                while (recvData == null) {
+                    recvData = SocketClient.read()
+                } //받아올 때까지 반복
+                Log.d("LOG_[SocketReceiver]","[SocketReceiver] 수신된 데이터: $recvData")
 
-            Log.d("LOG_[SocketReceiver]","[SocketReceiver] 실행 중")
-            var recvData: String? = null //받아올 데이터를 저장할 변수
-            while (recvData == null) {
-                recvData = SocketClient.read()
-            } //받아올 때까지 반복
-            Log.d("LOG_[SocketReceiver]","[SocketReceiver] 수신된 데이터: $recvData")
+                val tmp = recvData.split(",") // ,단위로 데이터를 분리
 
-            val tmp = recvData.split(",") // ,단위로 데이터를 분리
-
-            G.humityReal = Integer.parseInt(tmp[0]) //실제 습도
-            G.tOdd = Integer.parseInt(tmp[1]) //수위탱크 상태 / 0: 정상, 1: 이상
-            G.sOdd = Integer.parseInt(tmp[2]) //스프링쿨러 상태 / 0: 정상, 1: 이상
-            G.motionDetected = Integer.parseInt(tmp[3]) //모션 감지 / 0: 기본, 1: 감지
-            if(G.motionDetected == 1) G.toastBell("[SocketSender] 동작이 감지되었습니다")
-
+                G.humityReal = Integer.parseInt(tmp[0]) //실제 습도
+                G.tOdd = Integer.parseInt(tmp[1]) //수위탱크 상태 / 0: 정상, 1: 이상
+                G.sOdd = Integer.parseInt(tmp[2]) //스프링쿨러 상태 / 0: 정상, 1: 이상
+                G.motionDetected = Integer.parseInt(tmp[3]) //모션 감지 / 0: 기본, 1: 감지
+                if(G.motionDetected == 1) G.toastBell("[SocketSender] 동작이 감지되었습니다")
+            }
             sleep(G.interval) //잠시 대기 후 재실행
         }
     }
@@ -159,6 +164,7 @@ class SocketSender : Thread() {
 
     override fun run() { //스레드 실행 시 동작하는 코드
         Log.d("LOG_[SocketSender]","[SocketSender] 시작")
+        G.isSend = false
 
         if(!SocketClient.IsConnectRun) SocketClient.connect() //소켓 생성 및 연결
         if(!SocketClient.IsConnected){
@@ -167,14 +173,13 @@ class SocketSender : Thread() {
         }
         else{
             //data 전송(습도,경보,캡처)
-            val data = "${G.humityTarget},${G.sirenOption},${G.motorOption},${G.captureOption}"
+            val data = "${G.humityTarget},${G.sirenOption},${G.motorOption}"
             SocketClient.sendData(data)
             Log.d("LOG_[SocketSender]","[SocketSender] 전송한 데이터: $data")
             G.toast("[SocketSender] 전송 성공")
+            G.isSend = false
 
             Log.d("LOG_[SocketSender]","[SocketSender] 종료")
         }
-
-
     }
 }

@@ -74,7 +74,7 @@ class BatActivity : AppCompatActivity() {
             Log.d("LOG_[BatActivity]","[BatActivity] 정보 전송")
             //G.toast("[BatActivity] 정보 전송 완료")
 
-            if(binding.TextHL1.text.toString().isNotEmpty()){
+            if(G.isSend &&binding.TextHL1.text.toString().isNotEmpty()){
                 var id = (adapter.listData.size).toLong()
                 val logging = Logging(id,binding.TextHL1.text.toString(),System.currentTimeMillis())
                 helper.insert(logging)
@@ -84,6 +84,15 @@ class BatActivity : AppCompatActivity() {
             } //Logging 데이터 클래스를 생성하고 helper 클래스의 insert 메서드에 전달하여 DB에 저장
         }
 
+
+        //[식물 사진 캡처] 버튼에 대한 바인딩
+        binding.btHLset2.setOnClickListener {
+            SocketFileSender().start() //신호 전달
+            SocketFileSender().join()
+            Log.d("LOG_[BatActivity]","[BatActivity] 사진 캡처 완료")
+            G.toast("[BatActivity] 사진 캡처 완료")
+
+        }
 
         //[모터 강제 작동] 스위치에 대한 바인딩
         binding.switchAlert2.setOnCheckedChangeListener { buttonView, isChecked ->
