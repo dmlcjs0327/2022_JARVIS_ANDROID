@@ -129,8 +129,9 @@ class SocketClient : Serializable {
             while(true){
                 try{
                     if (inputStream.available() > 0) {//데이터가 존재한다면
-                        return datainputStream.readUTF()?.toString() //UTF-8 형식으로 디코딩하며 읽기
-
+                        val msg = ByteArray(inputStream.available())
+                        inputStream.read(msg)
+                        return msg.toString(Charsets.UTF_8)
                     }
                     return null
 //                    val msg = ByteArray(inputStream.available())

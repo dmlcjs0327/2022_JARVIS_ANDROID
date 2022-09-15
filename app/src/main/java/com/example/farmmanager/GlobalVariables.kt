@@ -25,7 +25,7 @@ object GlobalVariables {
     val interval = 1000L //스레드를 정지할 시간 (밀리초)
     val serverIP = "192.168.24.110" // 서버의 IP
     val serverPort = 3022 // 서버의 port
-    val videoUrl = "http://192.168.24.110:8081/?action=stream"
+    val videoUrl = "http://${serverIP}:8081/?action=stream"
 
 //    임시 메세지창을 띄우는 함수
     fun toast(message: String) {
